@@ -29,7 +29,7 @@ nav{padding:20px 60px;display:flex;justify-content:space-between;align-items:cen
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,107,53,0.4)}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 60px 60px;position:relative;overflow:hidden}
+.hero{min-height:100vh;display:flex;align-items:center;padding:90px 60px 40px;position:relative;overflow:hidden}
 .hero-bg-text{position:absolute;font-size:280px;font-weight:900;color:rgba(255,255,255,0.02);line-height:1;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:-10px;user-select:none;z-index:0}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
 .hero-orb-1{width:500px;height:500px;background:rgba(255,107,53,0.12);top:-100px;right:-100px;animation:orbFloat 6s ease-in-out infinite}
@@ -48,7 +48,7 @@ nav{padding:20px 60px;display:flex;justify-content:space-between;align-items:cen
 .btn-main:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(255,107,53,0.4)}
 .btn-ghost{background:transparent;color:#fff;padding:16px 36px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid rgba(255,255,255,0.15);transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
 .btn-ghost:hover{border-color:rgba(255,255,255,0.4);transform:translateY(-3px)}
-.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08);opacity:0;animation:fadeUp 0.8s 1s forwards}
+.hero-stats{display:flex;gap:40px;margin-top:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);opacity:0;animation:fadeUp 0.8s 1s forwards}
 .hero-stat-n{font-size:36px;font-weight:800;color:#ff6b35;letter-spacing:-1px}
 .hero-stat-l{color:rgba(255,255,255,0.4);font-size:13px;margin-top:2px;font-weight:500}
 
@@ -76,17 +76,17 @@ nav{padding:20px 60px;display:flex;justify-content:space-between;align-items:cen
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
 /* MARQUEE */
-.marquee-section{padding:32px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);overflow:hidden;background:rgba(255,107,53,0.03)}
+.marquee-section{padding:20px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);overflow:hidden;background:rgba(255,107,53,0.03)}
 .marquee-track{display:flex;gap:48px;animation:marquee 20s linear infinite;width:max-content}
 .marquee-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.3);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
 .marquee-item i{color:#ff6b35;font-size:18px}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SECTIONS */
-.section-wrap{padding:100px 60px;max-width:1200px;margin:0 auto}
+.section-wrap{padding:60px 40px;max-width:1200px;margin:0 auto}
 .section-tag{display:inline-flex;align-items:center;gap:8px;color:#ff6b35;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;font-family:'Fira Code',monospace}
 .section-tag::before{content:'';width:24px;height:2px;background:#ff6b35}
-.section-h2{font-size:52px;font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:60px}
+.section-h2{font-size:52px;font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:36px}
 .section-h2 span{color:#ff6b35}
 
 /* SKILLS */
@@ -124,7 +124,7 @@ nav{padding:20px 60px;display:flex;justify-content:space-between;align-items:cen
 /* EXPERIENCE */
 .exp-timeline{position:relative;padding-left:32px}
 .exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#ff6b35,transparent)}
-.exp-item{position:relative;margin-bottom:48px;padding-left:24px}
+.exp-item{position:relative;margin-bottom:28px;padding-left:24px}
 .exp-item::before{content:'';position:absolute;left:-36px;top:4px;width:12px;height:12px;background:#ff6b35;border-radius:50%;border:3px solid #0a0a0a;box-shadow:0 0 0 3px rgba(255,107,53,0.3)}
 .exp-year{font-family:'Fira Code',monospace;color:#ff6b35;font-size:12px;font-weight:500;margin-bottom:8px}
 .exp-title{font-size:20px;font-weight:700;margin-bottom:4px}
@@ -279,7 +279,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
 </div>
 
 <!-- ABOUT -->
-<div id="about" style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+<div id="about" style="padding:60px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
   <div class="section-wrap">
     <div class="section-tag scroll-reveal">About Me</div>
     <div class="section-h2 scroll-reveal">Who Am <span>I?</span></div>
@@ -317,7 +317,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
 </div>
 
 <!-- SKILLS -->
-<div id="skills" style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+<div id="skills" style="padding:60px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
   <div class="section-wrap">
     <div class="section-tag scroll-reveal">Skills</div>
     <div class="section-h2 scroll-reveal">What I <span>Know</span></div>
@@ -335,14 +335,14 @@ footer{flex-direction:column;gap:8px;text-align:center}
 </div>
 
 <!-- PROJECTS -->
-<div id="projects" style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+<div id="projects" style="padding:60px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
   <div class="section-wrap">
     <div class="section-tag scroll-reveal">Projects</div>
     <div class="section-h2 scroll-reveal">Featured <span>Work</span></div>
     <div class="projects-bento">
       <div class="proj-bento featured scroll-reveal">
         <div class="proj-bento-img">
-          <img src="erp.png" alt="ERP System" onerror="this.parentElement.innerHTML='<i class=\"ti ti-layout-dashboard\" style=\"font-size:48px;color:rgba(255,107,53,0.3)\"></i><span style=\"font-family:Fira Code,monospace;font-size:12px;color:rgba(255,255,255,0.2)\">// erp.png</span>'">
+          <img src="erp.PNG" alt="ERP System" onerror="this.parentElement.innerHTML='<i class=\"ti ti-layout-dashboard\" style=\"font-size:48px;color:rgba(255,107,53,0.3)\"></i><span style=\"font-family:Fira Code,monospace;font-size:12px;color:rgba(255,255,255,0.2)\">// erp.png</span>'">
         </div>
         <div class="proj-bento-body">
           <div class="proj-bento-cat">Laravel / PHP — Featured Project ⭐</div>
@@ -357,7 +357,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
 
       <div class="proj-bento scroll-reveal">
         <div class="proj-bento-img">
-          <img src="emarkingsolution.png" alt="eMarking Solution" onerror="this.parentElement.innerHTML='<i class=\"ti ti-world\" style=\"font-size:48px;color:rgba(255,107,53,0.3)\"></i><span style=\"font-family:Fira Code,monospace;font-size:12px;color:rgba(255,255,255,0.2)\">// emarkingsolution.png</span>'">
+          <img src="emarking.PNG" alt="eMarking Solution" onerror="this.parentElement.innerHTML='<i class=\"ti ti-world\" style=\"font-size:48px;color:rgba(255,107,53,0.3)\"></i><span style=\"font-family:Fira Code,monospace;font-size:12px;color:rgba(255,255,255,0.2)\">// emarkingsolution.png</span>'">
         </div>
         <div class="proj-bento-body">
           <div class="proj-bento-cat">WordPress</div>
@@ -370,7 +370,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
 
       <div class="proj-bento scroll-reveal">
         <div class="proj-bento-img">
-          <img src="urwatulemaan.png" alt="Urwa Tul Emaan Academy" onerror="this.parentElement.innerHTML='<i class=\"ti ti-school\" style=\"font-size:48px;color:rgba(255,107,53,0.3)\"></i><span style=\"font-family:Fira Code,monospace;font-size:12px;color:rgba(255,255,255,0.2)\">// urwatulemaan.png</span>'">
+          <img src="urwatulemaan .PNG" alt="Urwa Tul Emaan Academy" onerror="this.parentElement.innerHTML='<i class=\"ti ti-school\" style=\"font-size:48px;color:rgba(255,107,53,0.3)\"></i><span style=\"font-family:Fira Code,monospace;font-size:12px;color:rgba(255,255,255,0.2)\">// urwatulemaan.png</span>'">
         </div>
         <div class="proj-bento-body">
           <div class="proj-bento-cat">WordPress</div>
@@ -385,7 +385,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
 </div>
 
 <!-- EXPERIENCE -->
-<div style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+<div style="padding:60px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
   <div class="section-wrap">
     <div class="section-tag scroll-reveal">Experience</div>
     <div class="section-h2 scroll-reveal">Work <span>History</span></div>
@@ -407,7 +407,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
 </div>
 
 <!-- EDUCATION -->
-<div id="education" style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+<div id="education" style="padding:60px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
   <div class="section-wrap">
     <div class="section-tag scroll-reveal">Education</div>
     <div class="section-h2 scroll-reveal">My <span>Studies</span></div>
@@ -435,7 +435,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
 </div>
 
 <!-- CONTACT -->
-<div id="contact" style="padding:100px 0">
+<div id="contact" style="padding:60px 0">
   <div class="section-wrap">
     <div class="section-tag scroll-reveal">Contact</div>
     <div class="contact-big scroll-reveal">
