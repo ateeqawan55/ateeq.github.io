@@ -3,312 +3,499 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ateeq Awan — Full Stack Developer</title>
+<title>Ateeq Awan — WordPress Developer & Digital Marketer</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:#050510;color:#e2e8f0;font-family:'Inter',sans-serif;overflow-x:hidden}
+body{background:#0a0a0a;color:#fff;font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
 
-nav{background:rgba(5,5,16,0.95);border-bottom:1px solid #1e293b;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
-.logo{font-family:'Fira Code',monospace;color:#38bdf8;font-size:18px}
-.logo span{color:#fff}
-.nav-links{display:flex;gap:28px}
-.nav-links a{color:#64748b;font-size:13px;text-decoration:none;transition:color 0.2s;cursor:pointer;font-family:'Fira Code',monospace}
-.nav-links a:hover{color:#38bdf8}
+/* CUSTOM CURSOR */
+.cursor{width:20px;height:20px;border:2px solid #ff6b35;border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform 0.1s;transform:translate(-50%,-50%)}
+.cursor-follow{width:40px;height:40px;border:1px solid rgba(255,107,53,0.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:transform 0.15s,width 0.3s,height 0.3s;transform:translate(-50%,-50%)}
 
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:50px 50px}
-.hero-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1000px;width:100%;position:relative;z-index:1}
-.hero-tag{font-family:'Fira Code',monospace;color:#38bdf8;font-size:13px;margin-bottom:16px;opacity:0;animation:fadeUp 0.6s 0.2s forwards}
-.hero-name{font-size:52px;font-weight:600;color:#f8fafc;line-height:1.1;margin-bottom:12px;opacity:0;animation:fadeUp 0.6s 0.4s forwards}
-.hero-name span{color:#38bdf8}
-.hero-role{font-family:'Fira Code',monospace;color:#38bdf8;font-size:20px;margin-bottom:20px;min-height:30px;opacity:0;animation:fadeUp 0.6s 0.6s forwards}
-.hero-desc{color:#64748b;font-size:15px;line-height:1.8;margin-bottom:32px;opacity:0;animation:fadeUp 0.6s 0.8s forwards}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.6s 1s forwards}
-.btn-p{background:#38bdf8;color:#050510;padding:12px 28px;border-radius:8px;font-size:14px;border:none;cursor:pointer;font-weight:500;font-family:'Inter',sans-serif;transition:transform 0.2s;text-decoration:none;display:inline-block}
-.btn-p:hover{transform:translateY(-2px)}
-.btn-o{background:transparent;color:#38bdf8;padding:12px 28px;border-radius:8px;font-size:14px;border:1px solid #38bdf8;cursor:pointer;font-family:'Inter',sans-serif;transition:transform 0.2s;text-decoration:none;display:inline-block}
-.btn-o:hover{transform:translateY(-2px)}
+/* NOISE TEXTURE */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4}
 
-.hero-right{display:flex;justify-content:center;opacity:0;animation:fadeUp 0.6s 0.5s forwards}
-.avatar-wrap{position:relative;width:280px;height:280px}
-.avatar-ring{width:280px;height:280px;border-radius:50%;border:2px solid #38bdf8;display:flex;align-items:center;justify-content:center;position:relative;animation:rotate 8s linear infinite}
-.avatar-ring::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(56,189,248,0.3)}
-@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.avatar-inner{width:260px;height:260px;border-radius:50%;background:linear-gradient(135deg,#0f172a,#1e293b);border:3px solid #0d0d1a;display:flex;align-items:center;justify-content:center;animation:rotate 8s linear infinite reverse;overflow:hidden}
-.avatar-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.avatar-placeholder{font-family:'Inter',sans-serif;font-size:72px;font-weight:600;color:#38bdf8}
-.status-dot{position:absolute;bottom:20px;right:20px;background:#10b981;width:16px;height:16px;border-radius:50%;border:3px solid #050510;animation:pulse 2s infinite;z-index:2}
+/* NAV */
+nav{padding:20px 60px;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;width:100%;z-index:100;background:rgba(10,10,10,0.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.logo{font-size:22px;font-weight:800;letter-spacing:-1px}
+.logo span{color:#ff6b35}
+.nav-links{display:flex;gap:32px}
+.nav-links a{color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;font-weight:500;transition:color 0.2s;letter-spacing:0.5px}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:#ff6b35;color:#fff;padding:10px 24px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,107,53,0.4)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 60px 60px;position:relative;overflow:hidden}
+.hero-bg-text{position:absolute;font-size:280px;font-weight:900;color:rgba(255,255,255,0.02);line-height:1;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:-10px;user-select:none;z-index:0}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.hero-orb-1{width:500px;height:500px;background:rgba(255,107,53,0.12);top:-100px;right:-100px;animation:orbFloat 6s ease-in-out infinite}
+.hero-orb-2{width:300px;height:300px;background:rgba(99,102,241,0.1);bottom:-50px;left:100px;animation:orbFloat 8s ease-in-out infinite reverse}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+
+.hero-content{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center;max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.3);padding:8px 16px;border-radius:100px;font-size:13px;color:#ff6b35;font-weight:500;margin-bottom:24px;opacity:0;animation:fadeUp 0.8s 0.2s forwards}
+.hero-badge span{width:8px;height:8px;background:#ff6b35;border-radius:50%;animation:pulse 2s infinite}
+.hero-h1{font-size:72px;font-weight:800;line-height:1;letter-spacing:-3px;margin-bottom:24px;opacity:0;animation:fadeUp 0.8s 0.4s forwards}
+.hero-h1 .line2{color:#ff6b35;display:block;-webkit-text-stroke:2px #ff6b35;color:transparent}
+.hero-h1 .line3{display:block;font-size:48px;color:rgba(255,255,255,0.3);font-weight:400;letter-spacing:-1px}
+.hero-desc{color:rgba(255,255,255,0.5);font-size:17px;line-height:1.7;max-width:520px;margin-bottom:40px;opacity:0;animation:fadeUp 0.8s 0.6s forwards}
+.hero-btns{display:flex;gap:16px;opacity:0;animation:fadeUp 0.8s 0.8s forwards;flex-wrap:wrap}
+.btn-main{background:#ff6b35;color:#fff;padding:16px 36px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(255,107,53,0.4)}
+.btn-ghost{background:transparent;color:#fff;padding:16px 36px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid rgba(255,255,255,0.15);transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.4);transform:translateY(-3px)}
+.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08);opacity:0;animation:fadeUp 0.8s 1s forwards}
+.hero-stat-n{font-size:36px;font-weight:800;color:#ff6b35;letter-spacing:-1px}
+.hero-stat-l{color:rgba(255,255,255,0.4);font-size:13px;margin-top:2px;font-weight:500}
+
+/* HERO RIGHT — 3D CARD */
+.hero-right{opacity:0;animation:fadeUp 0.8s 0.5s forwards}
+.hero-card{background:linear-gradient(135deg,#141414,#1a1a1a);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:32px;position:relative;overflow:hidden;transform:perspective(1000px) rotateY(-5deg) rotateX(5deg);transition:transform 0.5s;box-shadow:20px 20px 60px rgba(0,0,0,0.5),-5px -5px 20px rgba(255,107,53,0.05)}
+.hero-card:hover{transform:perspective(1000px) rotateY(0deg) rotateX(0deg)}
+.hero-card-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 0%, rgba(255,107,53,0.1), transparent 60%);pointer-events:none}
+.hero-card-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.hero-card-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#ff6b35,#ff8c00);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;flex-shrink:0}
+.hero-card-name{font-size:18px;font-weight:700}
+.hero-card-role{color:rgba(255,255,255,0.4);font-size:13px;margin-top:2px}
+.hero-card-divider{height:1px;background:rgba(255,255,255,0.06);margin-bottom:20px}
+.hero-skill-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.hero-skill-name{font-size:13px;color:rgba(255,255,255,0.6);font-weight:500}
+.hero-skill-bar{width:140px;height:6px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden}
+.hero-skill-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#ff6b35,#ff8c00)}
+.hero-card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.hero-card-tag{background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.2);color:#ff6b35;font-size:11px;padding:5px 12px;border-radius:100px;font-weight:500;font-family:'Fira Code',monospace}
+.floating-pill{position:absolute;background:#141414;border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:10px 16px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.floating-pill.p1{top:-20px;right:20px;animation:float1 3s ease-in-out infinite;color:#10b981}
+.floating-pill.p2{bottom:-20px;left:20px;animation:float2 3s ease-in-out infinite 1.5s;color:#6366f1}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* MARQUEE */
+.marquee-section{padding:32px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);overflow:hidden;background:rgba(255,107,53,0.03)}
+.marquee-track{display:flex;gap:48px;animation:marquee 20s linear infinite;width:max-content}
+.marquee-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.3);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.marquee-item i{color:#ff6b35;font-size:18px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.section-wrap{padding:100px 60px;max-width:1200px;margin:0 auto}
+.section-tag{display:inline-flex;align-items:center;gap:8px;color:#ff6b35;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;font-family:'Fira Code',monospace}
+.section-tag::before{content:'';width:24px;height:2px;background:#ff6b35}
+.section-h2{font-size:52px;font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:60px}
+.section-h2 span{color:#ff6b35}
+
+/* SKILLS */
+.skills-bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skill-bento-card{background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:24px;transition:all 0.3s;position:relative;overflow:hidden}
+.skill-bento-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 0% 0%, rgba(255,107,53,0.08), transparent 60%);opacity:0;transition:opacity 0.3s}
+.skill-bento-card:hover{border-color:rgba(255,107,53,0.3);transform:translateY(-4px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.skill-bento-card:hover::before{opacity:1}
+.skill-icon-wrap{width:48px;height:48px;background:rgba(255,107,53,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#ff6b35;margin-bottom:16px}
+.skill-bento-name{font-size:15px;font-weight:700;margin-bottom:8px}
+.skill-bento-pct{font-size:28px;font-weight:800;color:#ff6b35;font-family:'Fira Code',monospace;margin-bottom:12px}
+.skill-bento-bar{height:4px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden}
+.skill-bento-fill{height:100%;background:linear-gradient(90deg,#ff6b35,#ff8c00);border-radius:100px;width:0%;transition:width 1.5s ease}
+
+/* PROJECTS */
+.projects-bento{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.proj-bento{background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:24px;overflow:hidden;transition:all 0.3s}
+.proj-bento:hover{border-color:rgba(255,107,53,0.3);transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,0.4)}
+.proj-bento.featured{grid-column:1/-1}
+.proj-bento-img{width:100%;height:220px;background:linear-gradient(135deg,#141414,#1e1e1e);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden}
+.proj-bento-img::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.5))}
+.proj-bento-img i{font-size:48px;color:rgba(255,107,53,0.3)}
+.proj-bento-img span{font-family:'Fira Code',monospace;font-size:12px;color:rgba(255,255,255,0.2)}
+.proj-bento-img img{width:100%;height:100%;object-fit:cover}
+.proj-bento-body{padding:24px}
+.proj-bento-cat{font-family:'Fira Code',monospace;font-size:12px;color:#ff6b35;font-weight:500;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.proj-bento-cat::before{content:'//'}
+.proj-bento-title{font-size:20px;font-weight:800;margin-bottom:10px;letter-spacing:-0.5px}
+.proj-bento-desc{color:rgba(255,255,255,0.4);font-size:14px;line-height:1.7;margin-bottom:18px}
+.proj-bento-techs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.proj-tech{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.5);font-size:12px;padding:5px 12px;border-radius:100px;font-family:'Fira Code',monospace;border:1px solid rgba(255,255,255,0.08)}
+.proj-bento-link{display:inline-flex;align-items:center;gap:8px;color:#ff6b35;font-size:14px;font-weight:600;text-decoration:none;transition:gap 0.2s}
+.proj-bento-link:hover{gap:12px}
+
+/* EXPERIENCE */
+.exp-timeline{position:relative;padding-left:32px}
+.exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#ff6b35,transparent)}
+.exp-item{position:relative;margin-bottom:48px;padding-left:24px}
+.exp-item::before{content:'';position:absolute;left:-36px;top:4px;width:12px;height:12px;background:#ff6b35;border-radius:50%;border:3px solid #0a0a0a;box-shadow:0 0 0 3px rgba(255,107,53,0.3)}
+.exp-year{font-family:'Fira Code',monospace;color:#ff6b35;font-size:12px;font-weight:500;margin-bottom:8px}
+.exp-title{font-size:20px;font-weight:700;margin-bottom:4px}
+.exp-company{color:rgba(255,255,255,0.4);font-size:14px;margin-bottom:12px}
+.exp-desc{color:rgba(255,255,255,0.4);font-size:14px;line-height:1.7}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.edu-card{background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:28px;transition:all 0.3s;position:relative;overflow:hidden}
+.edu-card:hover{border-color:rgba(255,107,53,0.3);transform:translateY(-4px)}
+.edu-card::after{content:attr(data-year);position:absolute;right:20px;top:20px;font-size:48px;font-weight:900;color:rgba(255,107,53,0.06);font-family:'Fira Code',monospace;line-height:1}
+.edu-icon{width:48px;height:48px;background:rgba(255,107,53,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#ff6b35;margin-bottom:20px}
+.edu-degree{font-size:17px;font-weight:700;margin-bottom:6px}
+.edu-school{color:rgba(255,255,255,0.4);font-size:14px;margin-bottom:4px}
+.edu-status{display:inline-block;font-size:12px;padding:4px 12px;border-radius:100px;font-weight:600;margin-top:12px}
+.edu-status.current{background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.2)}
+.edu-status.done{background:rgba(255,107,53,0.1);color:#ff6b35;border:1px solid rgba(255,107,53,0.2)}
+
+/* CONTACT */
+.contact-big{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-left h3{font-size:42px;font-weight:800;letter-spacing:-1.5px;margin-bottom:16px;line-height:1.1}
+.contact-left h3 span{color:#ff6b35}
+.contact-left p{color:rgba(255,255,255,0.4);font-size:16px;line-height:1.7;margin-bottom:40px}
+.contact-items{display:flex;flex-direction:column;gap:16px}
+.contact-card{background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:20px 24px;display:flex;align-items:center;gap:16px;transition:all 0.3s}
+.contact-card:hover{border-color:rgba(255,107,53,0.3);transform:translateX(6px)}
+.contact-card-icon{width:44px;height:44px;background:rgba(255,107,53,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#ff6b35;font-size:20px;flex-shrink:0}
+.contact-card-label{color:rgba(255,255,255,0.3);font-size:12px;font-family:'Fira Code',monospace}
+.contact-card-val{color:#fff;font-size:15px;font-weight:600;margin-top:2px}
+.contact-right{background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:24px;padding:36px}
+.avail-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);padding:12px 20px;border-radius:100px;margin-bottom:28px}
+.avail-dot{width:10px;height:10px;background:#10b981;border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.4)}50%{box-shadow:0 0 0 8px rgba(16,185,129,0)}}
-.fbadge{position:absolute;background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:8px 12px;font-size:12px;color:#94a3b8;white-space:nowrap;font-family:'Fira Code',monospace;z-index:3}
-.fbadge:nth-child(3){top:10%;left:-30px;animation:float1 3s ease-in-out infinite}
-.fbadge:nth-child(4){bottom:15%;right:-30px;animation:float2 3s ease-in-out infinite 1s}
-@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+.avail-text{color:#10b981;font-size:14px;font-weight:600}
+.contact-right h4{font-size:24px;font-weight:800;margin-bottom:12px;letter-spacing:-0.5px}
+.contact-right p{color:rgba(255,255,255,0.4);font-size:14px;line-height:1.7;margin-bottom:28px}
 
-.section{padding:80px 40px;max-width:1100px;margin:0 auto}
-.sec-label{font-family:'Fira Code',monospace;color:#38bdf8;font-size:13px;margin-bottom:8px}
-.sec-title{font-size:32px;font-weight:600;color:#f8fafc;margin-bottom:48px}
-.sec-title span{color:#38bdf8}
+/* FOOTER */
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:32px 60px;display:flex;justify-content:space-between;align-items:center;background:#0a0a0a}
+footer p{color:rgba(255,255,255,0.2);font-size:13px;font-family:'Fira Code',monospace}
+footer span{color:#ff6b35}
 
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px}
-.stat-c{background:#0d0d1a;border:1px solid #1e293b;border-radius:12px;padding:24px;text-align:center;transition:border-color 0.3s,transform 0.3s}
-.stat-c:hover{border-color:#38bdf8;transform:translateY(-4px)}
-.stat-n{font-size:36px;font-weight:600;color:#38bdf8;font-family:'Fira Code',monospace}
-.stat-l{color:#64748b;font-size:13px;margin-top:4px}
-
-.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.sk-card{background:#0d0d1a;border:1px solid #1e293b;border-radius:12px;padding:20px;text-align:center;transition:all 0.3s}
-.sk-card:hover{border-color:#38bdf8;transform:translateY(-4px);background:#0f172a}
-.sk-icon{font-size:28px;color:#38bdf8;margin-bottom:10px}
-.sk-name{color:#e2e8f0;font-size:13px;margin-bottom:10px;font-weight:500}
-.sk-bar{background:#1a1a2e;border-radius:4px;height:4px;overflow:hidden}
-.sk-fill{height:4px;border-radius:4px;background:linear-gradient(90deg,#38bdf8,#6366f1);width:0%;transition:width 1.5s ease}
-.sk-pct{color:#38bdf8;font-size:11px;margin-top:4px;font-family:'Fira Code',monospace}
-
-.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.proj-card{background:#0d0d1a;border:1px solid #1e293b;border-radius:16px;overflow:hidden;transition:all 0.3s}
-.proj-card:hover{border-color:#38bdf8;transform:translateY(-6px)}
-.proj-full{grid-column:1/-1}
-.proj-img-placeholder{width:100%;height:200px;background:linear-gradient(135deg,#0f172a,#1e293b);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#334155;font-family:'Fira Code',monospace;font-size:13px}
-.proj-img-placeholder i{font-size:40px;color:#334155}
-.proj-img-placeholder img{width:100%;height:200px;object-fit:cover}
-.proj-body{padding:20px}
-.proj-tag{display:inline-block;background:#0f2a3f;color:#38bdf8;font-size:11px;padding:4px 12px;border-radius:20px;margin-bottom:10px;font-family:'Fira Code',monospace}
-.proj-title{color:#f8fafc;font-size:17px;font-weight:600;margin-bottom:8px}
-.proj-desc{color:#64748b;font-size:13px;line-height:1.7;margin-bottom:16px}
-.proj-techs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-.tech-b{background:#1a1a2e;color:#94a3b8;font-size:11px;padding:4px 10px;border-radius:20px;font-family:'Fira Code',monospace}
-.proj-link{color:#38bdf8;font-size:13px;text-decoration:none;font-family:'Fira Code',monospace}
-.proj-link:hover{text-decoration:underline}
-
-.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.con-item{background:#0d0d1a;border:1px solid #1e293b;border-radius:12px;padding:20px;display:flex;align-items:center;gap:16px;transition:all 0.3s}
-.con-item:hover{border-color:#38bdf8;transform:translateX(4px)}
-.con-icon{width:44px;height:44px;background:#0f2a3f;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#38bdf8;font-size:20px;flex-shrink:0}
-.con-label{color:#64748b;font-size:11px;font-family:'Fira Code',monospace}
-.con-val{color:#e2e8f0;font-size:14px;font-weight:500;margin-top:2px}
-
-.edu-list{display:flex;flex-direction:column;gap:12px}
-.edu-item{background:#0d0d1a;border:1px solid #1e293b;border-radius:12px;padding:20px;display:flex;justify-content:space-between;align-items:center;transition:all 0.3s}
-.edu-item:hover{border-color:#38bdf8;transform:translateX(4px)}
-.edu-dot{width:10px;height:10px;border-radius:50%;background:#38bdf8;margin-right:16px;flex-shrink:0}
-.edu-t{color:#f8fafc;font-size:15px;font-weight:500}
-.edu-s{color:#64748b;font-size:13px;margin-top:3px}
-.edu-y{color:#38bdf8;font-family:'Fira Code',monospace;font-size:14px}
-
-.scroll-reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s,transform 0.6s}
+.scroll-reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s,transform 0.7s}
 .scroll-reveal.visible{opacity:1;transform:translateY(0)}
 
-footer{background:#0d0d1a;border-top:1px solid #1e293b;padding:24px 40px;text-align:center}
-footer p{color:#334155;font-family:'Fira Code',monospace;font-size:13px}
-footer span{color:#38bdf8}
-
-@media(max-width:768px){
-.hero-content{grid-template-columns:1fr;text-align:center}
-.hero-right{display:none}
-.stats-row{grid-template-columns:repeat(2,1fr)}
-.skills-grid{grid-template-columns:repeat(2,1fr)}
-.projects-grid{grid-template-columns:1fr}
-.contact-grid{grid-template-columns:1fr}
-.nav-links{display:none}
+@media(max-width:900px){
+.hero-content{grid-template-columns:1fr}.hero-right{display:none}
+.section-wrap{padding:60px 24px}.hero{padding:100px 24px 60px}
+nav{padding:16px 24px}.nav-links{display:none}
+.skills-bento{grid-template-columns:repeat(2,1fr)}
+.projects-bento{grid-template-columns:1fr}
+.edu-grid{grid-template-columns:1fr}
+.contact-big{grid-template-columns:1fr}
+footer{flex-direction:column;gap:8px;text-align:center}
+.hero-h1{font-size:48px}.section-h2{font-size:36px}
 }
 </style>
 </head>
 <body>
 
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follow" id="cursorFollow"></div>
+
 <nav>
-  <div class="logo">&lt;<span>Ateeq Awan</span> /&gt;</div>
+  <div class="logo">Ateeq<span>.</span></div>
   <div class="nav-links">
-    <a href="#about">about</a>
-    <a href="#skills">skills</a>
-    <a href="#projects">projects</a>
-    <a href="#education">education</a>
-    <a href="#contact">contact</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
   </div>
+  <a href="#contact" class="nav-cta">Hire Me</a>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-grid"></div>
+  <div class="hero-bg-text">ATEEQ</div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-tag">// Hello World 👋</div>
-      <div class="hero-name">Hi, I'm <span>Ateeq</span><br>Awan</div>
-      <div class="hero-role"><span id="typed"></span><span style="animation:blink 1s infinite;color:#38bdf8">|</span></div>
-      <div class="hero-desc">Passionate Full Stack Developer & Digital Marketer from Islamabad, Pakistan. I build complete web solutions — from WordPress sites to full ERP systems.</div>
+      <div class="hero-badge"><span></span> Available for freelance work</div>
+      <h1 class="hero-h1">
+        WordPress
+        <span class="line2">Developer</span>
+        <span class="line3">& Digital Marketer</span>
+      </h1>
+      <p class="hero-desc">I build professional WordPress websites and run digital marketing campaigns. I also built a complete ERP System using Laravel. Based in Islamabad, Pakistan.</p>
       <div class="hero-btns">
-        <a href="#projects" class="btn-p">View My Work</a>
-        <a href="#contact" class="btn-o">Contact Me</a>
+        <a href="#projects" class="btn-main">View My Work <i class="ti ti-arrow-right"></i></a>
+        <a href="#contact" class="btn-ghost">Let's Talk <i class="ti ti-message"></i></a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-n">2+</div><div class="hero-stat-l">Years Exp</div></div>
+        <div><div class="hero-stat-n">2+</div><div class="hero-stat-l">Projects</div></div>
+        <div><div class="hero-stat-n">5+</div><div class="hero-stat-l">Skills</div></div>
       </div>
     </div>
     <div class="hero-right">
-      <div class="avatar-wrap">
-        <div class="avatar-ring">
-          <div class="avatar-inner">
-            <!-- APNI PHOTO YAHAN ADD KARO: <img src="photo.jpg" alt="Ateeq Awan"> -->
-            <span class="avatar-placeholder">AA</span>
+      <div style="position:relative">
+        <div class="floating-pill p1"><span>⚡</span> Laravel ERP Built</div>
+        <div class="hero-card">
+          <div class="hero-card-glow"></div>
+          <div class="hero-card-header">
+            <div class="hero-card-avatar">AA</div>
+            <div>
+              <div class="hero-card-name">Ateeq Awan</div>
+              <div class="hero-card-role">WordPress Developer & Digital Marketer</div>
+            </div>
+          </div>
+          <div class="hero-card-divider"></div>
+          <div class="hero-skill-item"><span class="hero-skill-name">WordPress</span><div class="hero-skill-bar"><div class="hero-skill-fill" style="width:90%"></div></div></div>
+          <div class="hero-skill-item"><span class="hero-skill-name">Laravel/PHP</span><div class="hero-skill-bar"><div class="hero-skill-fill" style="width:75%"></div></div></div>
+          <div class="hero-skill-item"><span class="hero-skill-name">Digital Marketing</span><div class="hero-skill-bar"><div class="hero-skill-fill" style="width:80%"></div></div></div>
+          <div class="hero-skill-item"><span class="hero-skill-name">SEO</span><div class="hero-skill-bar"><div class="hero-skill-fill" style="width:70%"></div></div></div>
+          <div class="hero-card-tags">
+            <span class="hero-card-tag">ERP System</span>
+            <span class="hero-card-tag">WordPress</span>
+            <span class="hero-card-tag">Bootstrap</span>
+            <span class="hero-card-tag">MySQL</span>
           </div>
         </div>
-        <div class="status-dot"></div>
-        <div class="fbadge">⚡ Laravel Dev</div>
-        <div class="fbadge">🎯 SEO Expert</div>
+        <div class="floating-pill p2"><span>🎯</span> SEO & Ads Expert</div>
       </div>
     </div>
   </div>
 </div>
 
-<div id="about" style="border-top:1px solid #1a1a2e;background:#07070f;padding:80px 0">
-  <div class="section">
-    <div class="sec-label scroll-reveal">// about me</div>
-    <div class="sec-title scroll-reveal">About <span>Me</span></div>
-    <div class="stats-row scroll-reveal">
-      <div class="stat-c"><div class="stat-n">2+</div><div class="stat-l">Years Experience</div></div>
-      <div class="stat-c"><div class="stat-n">2+</div><div class="stat-l">Projects Done</div></div>
-      <div class="stat-c"><div class="stat-n">5+</div><div class="stat-l">Skills</div></div>
-      <div class="stat-c"><div class="stat-n">BS</div><div class="stat-l">CS 4th Semester</div></div>
-    </div>
-    <p class="scroll-reveal" style="color:#94a3b8;font-size:15px;line-height:1.9;max-width:700px">
-      I am a self-driven developer and digital marketer with 2+ years of hands-on experience. I have worked at <strong style="color:#38bdf8">Karwan Solution</strong> (IT company, Mansehra) and built complete web solutions for multiple clients. I specialize in WordPress Development, Laravel PHP, SEO, and running Facebook & Instagram Ads.
-    </p>
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><i class="ti ti-brand-wordpress"></i> WordPress</div>
+    <div class="marquee-item"><i class="ti ti-brand-php"></i> Laravel PHP</div>
+    <div class="marquee-item"><i class="ti ti-brand-html5"></i> HTML / CSS</div>
+    <div class="marquee-item"><i class="ti ti-brand-bootstrap"></i> Bootstrap</div>
+    <div class="marquee-item"><i class="ti ti-brand-javascript"></i> jQuery</div>
+    <div class="marquee-item"><i class="ti ti-search"></i> Off Page SEO</div>
+    <div class="marquee-item"><i class="ti ti-brand-facebook"></i> Facebook Ads</div>
+    <div class="marquee-item"><i class="ti ti-speakerphone"></i> Digital Marketing</div>
+    <div class="marquee-item"><i class="ti ti-database"></i> MySQL</div>
+    <div class="marquee-item"><i class="ti ti-brand-wordpress"></i> WordPress</div>
+    <div class="marquee-item"><i class="ti ti-brand-php"></i> Laravel PHP</div>
+    <div class="marquee-item"><i class="ti ti-brand-html5"></i> HTML / CSS</div>
+    <div class="marquee-item"><i class="ti ti-brand-bootstrap"></i> Bootstrap</div>
+    <div class="marquee-item"><i class="ti ti-brand-javascript"></i> jQuery</div>
+    <div class="marquee-item"><i class="ti ti-search"></i> Off Page SEO</div>
+    <div class="marquee-item"><i class="ti ti-brand-facebook"></i> Facebook Ads</div>
+    <div class="marquee-item"><i class="ti ti-speakerphone"></i> Digital Marketing</div>
+    <div class="marquee-item"><i class="ti ti-database"></i> MySQL</div>
   </div>
 </div>
 
-<div id="skills" style="border-top:1px solid #1a1a2e;padding:80px 0">
-  <div class="section">
-    <div class="sec-label scroll-reveal">// my skills</div>
-    <div class="sec-title scroll-reveal">What I <span>Know</span></div>
-    <div class="skills-grid scroll-reveal">
-      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-wordpress"></i></div><div class="sk-name">WordPress</div><div class="sk-bar"><div class="sk-fill" data-w="90%"></div></div><div class="sk-pct">90%</div></div>
-      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-php"></i></div><div class="sk-name">PHP / Laravel</div><div class="sk-bar"><div class="sk-fill" data-w="75%"></div></div><div class="sk-pct">75%</div></div>
-      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-html5"></i></div><div class="sk-name">HTML / CSS</div><div class="sk-bar"><div class="sk-fill" data-w="80%"></div></div><div class="sk-pct">80%</div></div>
-      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-bootstrap"></i></div><div class="sk-name">Bootstrap</div><div class="sk-bar"><div class="sk-fill" data-w="80%"></div></div><div class="sk-pct">80%</div></div>
-      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-javascript"></i></div><div class="sk-name">jQuery / JS</div><div class="sk-bar"><div class="sk-fill" data-w="65%"></div></div><div class="sk-pct">65%</div></div>
-      <div class="sk-card"><div class="sk-icon"><i class="ti ti-search"></i></div><div class="sk-name">Off Page SEO</div><div class="sk-bar"><div class="sk-fill" data-w="70%"></div></div><div class="sk-pct">70%</div></div>
-      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-facebook"></i></div><div class="sk-name">Facebook Ads</div><div class="sk-bar"><div class="sk-fill" data-w="75%"></div></div><div class="sk-pct">75%</div></div>
-      <div class="sk-card"><div class="sk-icon"><i class="ti ti-speakerphone"></i></div><div class="sk-name">Digital Marketing</div><div class="sk-bar"><div class="sk-fill" data-w="80%"></div></div><div class="sk-pct">80%</div></div>
+<!-- ABOUT -->
+<div id="about" style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+  <div class="section-wrap">
+    <div class="section-tag scroll-reveal">About Me</div>
+    <div class="section-h2 scroll-reveal">Who Am <span>I?</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center" class="scroll-reveal">
+      <div>
+        <p style="color:rgba(255,255,255,0.5);font-size:17px;line-height:1.9;margin-bottom:24px">I am a self-driven <strong style="color:#fff">WordPress Developer & Digital Marketer</strong> and <strong style="color:#fff">Digital Marketer</strong> with 2+ years of hands-on experience building real-world projects.</p>
+        <p style="color:rgba(255,255,255,0.5);font-size:17px;line-height:1.9;margin-bottom:32px">I have worked at <strong style="color:#ff6b35">Karwan Solution</strong> (IT company, Mansehra) and successfully delivered multiple client projects — from simple WordPress sites to a complete ERP System built in Laravel.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:20px 24px;text-align:center;min-width:120px">
+            <div style="font-size:32px;font-weight:800;color:#ff6b35">2+</div>
+            <div style="color:rgba(255,255,255,0.4);font-size:13px;margin-top:4px">Years Exp</div>
+          </div>
+          <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:20px 24px;text-align:center;min-width:120px">
+            <div style="font-size:32px;font-weight:800;color:#ff6b35">2+</div>
+            <div style="color:rgba(255,255,255,0.4);font-size:13px;margin-top:4px">Live Projects</div>
+          </div>
+          <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:20px 24px;text-align:center;min-width:120px">
+            <div style="font-size:32px;font-weight:800;color:#ff6b35">BS</div>
+            <div style="color:rgba(255,255,255,0.4);font-size:13px;margin-top:4px">CS Student</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:24px;padding:32px">
+        <div style="font-size:13px;color:rgba(255,255,255,0.3);font-family:'Fira Code',monospace;margin-bottom:16px">// quick info</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:rgba(255,255,255,0.4);font-size:14px">Name</span><span style="font-weight:600;font-size:14px">Ateeq Awan</span></div>
+          <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:rgba(255,255,255,0.4);font-size:14px">Location</span><span style="font-weight:600;font-size:14px">Islamabad, Pakistan</span></div>
+          <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:rgba(255,255,255,0.4);font-size:14px">Degree</span><span style="font-weight:600;font-size:14px">BS CS (4th Sem)</span></div>
+          <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:rgba(255,255,255,0.4);font-size:14px">Experience</span><span style="font-weight:600;font-size:14px">2+ Years</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:rgba(255,255,255,0.4);font-size:14px">Status</span><span style="color:#10b981;font-weight:600;font-size:14px">✓ Available</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div id="projects" style="border-top:1px solid #1a1a2e;background:#07070f;padding:80px 0">
-  <div class="section">
-    <div class="sec-label scroll-reveal">// my work</div>
-    <div class="sec-title scroll-reveal">Featured <span>Projects</span></div>
-    <div class="projects-grid">
-      <div class="proj-card proj-full scroll-reveal">
-        <div class="proj-img-placeholder">
-          <!-- ERP SCREENSHOT: <img src="erp-screenshot.png" alt="ERP System"> -->
+<!-- SKILLS -->
+<div id="skills" style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+  <div class="section-wrap">
+    <div class="section-tag scroll-reveal">Skills</div>
+    <div class="section-h2 scroll-reveal">What I <span>Know</span></div>
+    <div class="skills-bento scroll-reveal">
+      <div class="skill-bento-card"><div class="skill-icon-wrap"><i class="ti ti-brand-wordpress"></i></div><div class="skill-bento-name">WordPress Dev</div><div class="skill-bento-pct">90%</div><div class="skill-bento-bar"><div class="skill-bento-fill" data-w="90%"></div></div></div>
+      <div class="skill-bento-card"><div class="skill-icon-wrap"><i class="ti ti-brand-php"></i></div><div class="skill-bento-name">PHP / Laravel</div><div class="skill-bento-pct">75%</div><div class="skill-bento-bar"><div class="skill-bento-fill" data-w="75%"></div></div></div>
+      <div class="skill-bento-card"><div class="skill-icon-wrap"><i class="ti ti-brand-html5"></i></div><div class="skill-bento-name">HTML / CSS</div><div class="skill-bento-pct">80%</div><div class="skill-bento-bar"><div class="skill-bento-fill" data-w="80%"></div></div></div>
+      <div class="skill-bento-card"><div class="skill-icon-wrap"><i class="ti ti-brand-bootstrap"></i></div><div class="skill-bento-name">Bootstrap</div><div class="skill-bento-pct">80%</div><div class="skill-bento-bar"><div class="skill-bento-fill" data-w="80%"></div></div></div>
+      <div class="skill-bento-card"><div class="skill-icon-wrap"><i class="ti ti-brand-javascript"></i></div><div class="skill-bento-name">jQuery / JS</div><div class="skill-bento-pct">65%</div><div class="skill-bento-bar"><div class="skill-bento-fill" data-w="65%"></div></div></div>
+      <div class="skill-bento-card"><div class="skill-icon-wrap"><i class="ti ti-search"></i></div><div class="skill-bento-name">Off Page SEO</div><div class="skill-bento-pct">70%</div><div class="skill-bento-bar"><div class="skill-bento-fill" data-w="70%"></div></div></div>
+      <div class="skill-bento-card"><div class="skill-icon-wrap"><i class="ti ti-brand-facebook"></i></div><div class="skill-bento-name">Facebook Ads</div><div class="skill-bento-pct">75%</div><div class="skill-bento-bar"><div class="skill-bento-fill" data-w="75%"></div></div></div>
+      <div class="skill-bento-card"><div class="skill-icon-wrap"><i class="ti ti-speakerphone"></i></div><div class="skill-bento-name">Digital Marketing</div><div class="skill-bento-pct">80%</div><div class="skill-bento-bar"><div class="skill-bento-fill" data-w="80%"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+  <div class="section-wrap">
+    <div class="section-tag scroll-reveal">Projects</div>
+    <div class="section-h2 scroll-reveal">Featured <span>Work</span></div>
+    <div class="projects-bento">
+      <div class="proj-bento featured scroll-reveal">
+        <div class="proj-bento-img">
+          <!-- ERP IMAGE: Replace with <img src="erp.png"> -->
           <i class="ti ti-layout-dashboard"></i>
-          <span>// ERP System Screenshot — Replace karo apni image se</span>
+          <span>// Add ERP Screenshot — erp.png</span>
         </div>
-        <div class="proj-body">
-          <div class="proj-tag">Laravel / PHP — Featured Project ⭐</div>
-          <div class="proj-title">ERP System — Complete Business Solution</div>
-          <div class="proj-desc">Full-featured Enterprise Resource Planning system built from scratch using Laravel. Includes HR management, attendance with auto status, inventory, POS cash counter, invoicing, CRM, project management, and real-time dashboard charts.</div>
-          <div class="proj-techs">
-            <span class="tech-b">Laravel</span><span class="tech-b">MySQL</span><span class="tech-b">Bootstrap 5</span><span class="tech-b">Chart.js</span><span class="tech-b">DomPDF</span><span class="tech-b">XAMPP</span>
+        <div class="proj-bento-body">
+          <div class="proj-bento-cat">Laravel / PHP — Featured Project ⭐</div>
+          <div class="proj-bento-title">ERP System — Complete Business Solution</div>
+          <div class="proj-bento-desc">Full-featured Enterprise Resource Planning system built from scratch in Laravel. HR management, attendance auto-tracking, inventory, POS cash counter, invoicing, CRM, projects, and real-time dashboard charts.</div>
+          <div class="proj-bento-techs">
+            <span class="proj-tech">Laravel</span><span class="proj-tech">MySQL</span><span class="proj-tech">Bootstrap 5</span><span class="proj-tech">Chart.js</span><span class="proj-tech">DomPDF</span><span class="proj-tech">XAMPP</span>
           </div>
-          <span class="proj-link">localhost:8000 — Local Project</span>
+          <span class="proj-bento-link" style="color:rgba(255,255,255,0.3);font-size:13px;font-family:'Fira Code',monospace">localhost:8000 — Local Project</span>
         </div>
       </div>
 
-      <div class="proj-card scroll-reveal">
-        <div class="proj-img-placeholder">
-          <!-- SCREENSHOT: <img src="emarkingsolution.png" alt="eMarking Solution"> -->
+      <div class="proj-bento scroll-reveal">
+        <div class="proj-bento-img">
+          <!-- IMAGE: <img src="emarkingsolution.png"> -->
           <i class="ti ti-world"></i>
-          <span>// eMarkingSolution screenshot lagao</span>
+          <span>// emarkingsolution.png</span>
         </div>
-        <div class="proj-body">
-          <div class="proj-tag">WordPress</div>
-          <div class="proj-title">eMarking Solution</div>
-          <div class="proj-desc">Professional business website built on WordPress with custom design, SEO optimization, and digital marketing setup.</div>
-          <div class="proj-techs">
-            <span class="tech-b">WordPress</span><span class="tech-b">SEO</span><span class="tech-b">PHP</span>
-          </div>
-          <a href="https://emarkingsolution.com/" target="_blank" class="proj-link">emarkingsolution.com →</a>
+        <div class="proj-bento-body">
+          <div class="proj-bento-cat">WordPress</div>
+          <div class="proj-bento-title">eMarking Solution</div>
+          <div class="proj-bento-desc">Professional business website built on WordPress with custom design, SEO optimization, and complete digital marketing setup.</div>
+          <div class="proj-bento-techs"><span class="proj-tech">WordPress</span><span class="proj-tech">SEO</span><span class="proj-tech">PHP</span></div>
+          <a href="https://emarkingsolution.com/" target="_blank" class="proj-bento-link">Visit Site <i class="ti ti-arrow-right"></i></a>
         </div>
       </div>
 
-      <div class="proj-card scroll-reveal">
-        <div class="proj-img-placeholder">
-          <!-- SCREENSHOT: <img src="smartbookerp.png" alt="SmartBook ERP"> -->
+      <div class="proj-bento scroll-reveal">
+        <div class="proj-bento-img">
+          <!-- IMAGE: <img src="smartbookerp.png"> -->
           <i class="ti ti-brand-wordpress"></i>
-          <span>// SmartBook ERP screenshot lagao</span>
+          <span>// smartbookerp.png</span>
         </div>
-        <div class="proj-body">
-          <div class="proj-tag">WordPress</div>
-          <div class="proj-title">SmartBook ERP Website</div>
-          <div class="proj-desc">WordPress-based ERP showcase website with professional design, custom layouts, and complete digital presence setup.</div>
-          <div class="proj-techs">
-            <span class="tech-b">WordPress</span><span class="tech-b">CSS</span><span class="tech-b">SEO</span>
-          </div>
-          <a href="https://smartbookerp.com/" target="_blank" class="proj-link">smartbookerp.com →</a>
+        <div class="proj-bento-body">
+          <div class="proj-bento-cat">WordPress</div>
+          <div class="proj-bento-title">SmartBook ERP Website</div>
+          <div class="proj-bento-desc">WordPress-based ERP showcase website with professional design, custom layouts, and complete digital presence setup.</div>
+          <div class="proj-bento-techs"><span class="proj-tech">WordPress</span><span class="proj-tech">CSS</span><span class="proj-tech">SEO</span></div>
+          <a href="https://smartbookerp.com/" target="_blank" class="proj-bento-link">Visit Site <i class="ti ti-arrow-right"></i></a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div id="education" style="border-top:1px solid #1a1a2e;padding:80px 0">
-  <div class="section">
-    <div class="sec-label scroll-reveal">// education</div>
-    <div class="sec-title scroll-reveal">My <span>Education</span></div>
-    <div class="edu-list">
-      <div class="edu-item scroll-reveal">
-        <div style="display:flex;align-items:center"><div class="edu-dot"></div><div><div class="edu-t">BS Computer Science</div><div class="edu-s">4th Semester — In Progress</div></div></div>
-        <div class="edu-y">2023 — Present</div>
+<!-- EXPERIENCE -->
+<div style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+  <div class="section-wrap">
+    <div class="section-tag scroll-reveal">Experience</div>
+    <div class="section-h2 scroll-reveal">Work <span>History</span></div>
+    <div class="exp-timeline scroll-reveal">
+      <div class="exp-item">
+        <div class="exp-year">2022 — 2024</div>
+        <div class="exp-title">WordPress Developer & SEO Specialist</div>
+        <div class="exp-company">Karwan Solution — Mansehra, KPK</div>
+        <div class="exp-desc">Developed multiple WordPress websites for clients. Handled Off-Page SEO including Profile Backlinks, Web 2.0, and Article Submission. Managed digital marketing campaigns.</div>
       </div>
-      <div class="edu-item scroll-reveal">
-        <div style="display:flex;align-items:center"><div class="edu-dot"></div><div><div class="edu-t">FSC Pre-Engineering</div><div class="edu-s">BISE Abbottabad</div></div></div>
-        <div class="edu-y">2023</div>
-      </div>
-      <div class="edu-item scroll-reveal">
-        <div style="display:flex;align-items:center"><div class="edu-dot"></div><div><div class="edu-t">SSC (Matric)</div><div class="edu-s">BISE Abbottabad</div></div></div>
-        <div class="edu-y">2021</div>
+      <div class="exp-item">
+        <div class="exp-year">2024 — Present</div>
+        <div class="exp-title">Freelance WordPress Developer & Digital Marketer</div>
+        <div class="exp-company">Self-Employed — Islamabad</div>
+        <div class="exp-desc">Built complete ERP System using Laravel with AI assistance. Running Facebook & Instagram Ads for clients. Building WordPress websites for businesses.</div>
       </div>
     </div>
   </div>
 </div>
 
-<div id="contact" style="border-top:1px solid #1a1a2e;background:#07070f;padding:80px 0">
-  <div class="section">
-    <div class="sec-label scroll-reveal">// contact me</div>
-    <div class="sec-title scroll-reveal">Get In <span>Touch</span></div>
-    <div class="contact-grid scroll-reveal">
-      <div class="con-item"><div class="con-icon"><i class="ti ti-phone"></i></div><div><div class="con-label">// phone</div><div class="con-val">0334-0970941</div></div></div>
-      <div class="con-item"><div class="con-icon"><i class="ti ti-mail"></i></div><div><div class="con-label">// email</div><div class="con-val">ateeqawan744@gmail.com</div></div></div>
-      <div class="con-item"><div class="con-icon"><i class="ti ti-map-pin"></i></div><div><div class="con-label">// location</div><div class="con-val">Margalla Town, Islamabad</div></div></div>
-      <div class="con-item"><div class="con-icon"><i class="ti ti-briefcase"></i></div><div><div class="con-label">// status</div><div class="con-val" style="color:#10b981">Available for Work ✓</div></div></div>
+<!-- EDUCATION -->
+<div id="education" style="padding:100px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+  <div class="section-wrap">
+    <div class="section-tag scroll-reveal">Education</div>
+    <div class="section-h2 scroll-reveal">My <span>Studies</span></div>
+    <div class="edu-grid scroll-reveal">
+      <div class="edu-card" data-year="BS">
+        <div class="edu-icon"><i class="ti ti-school"></i></div>
+        <div class="edu-degree">BS Computer Science</div>
+        <div class="edu-school">4th Semester — In Progress</div>
+        <span class="edu-status current">Currently Enrolled</span>
+      </div>
+      <div class="edu-card" data-year="FSC">
+        <div class="edu-icon"><i class="ti ti-certificate"></i></div>
+        <div class="edu-degree">FSC Pre-Engineering</div>
+        <div class="edu-school">BISE Abbottabad</div>
+        <span class="edu-status done">2023 — Completed</span>
+      </div>
+      <div class="edu-card" data-year="SSC">
+        <div class="edu-icon"><i class="ti ti-award"></i></div>
+        <div class="edu-degree">SSC (Matric)</div>
+        <div class="edu-school">BISE Abbottabad</div>
+        <span class="edu-status done">2021 — Completed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" style="padding:100px 0">
+  <div class="section-wrap">
+    <div class="section-tag scroll-reveal">Contact</div>
+    <div class="contact-big scroll-reveal">
+      <div class="contact-left">
+        <h3>Let's Work<br><span>Together</span></h3>
+        <p>Have a project in mind? Need a website, ERP system, or digital marketing? I'm available for freelance work and collaborations.</p>
+        <div class="contact-items">
+          <div class="contact-card"><div class="contact-card-icon"><i class="ti ti-phone"></i></div><div><div class="contact-card-label">// phone</div><div class="contact-card-val">0334-0970941</div></div></div>
+          <div class="contact-card"><div class="contact-card-icon"><i class="ti ti-mail"></i></div><div><div class="contact-card-label">// email</div><div class="contact-card-val">ateeqawan744@gmail.com</div></div></div>
+          <div class="contact-card"><div class="contact-card-icon"><i class="ti ti-map-pin"></i></div><div><div class="contact-card-label">// location</div><div class="contact-card-val">Margalla Town, Islamabad</div></div></div>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="avail-badge"><div class="avail-dot"></div><div class="avail-text">Available for new projects</div></div>
+        <h4>Ready to start your project?</h4>
+        <p>Whether you need a WordPress site, a custom web application, or digital marketing services — let's build something great together.</p>
+        <a href="mailto:ateeqawan744@gmail.com" class="btn-main" style="display:inline-flex">Send Email <i class="ti ti-arrow-right"></i></a>
+      </div>
     </div>
   </div>
 </div>
 
 <footer>
-  <p>&lt;/ Made with <span>❤</span> by <span>Ateeq Awan</span> — Full Stack Developer &gt;</p>
+  <p>&lt;/ <span>Ateeq Awan</span> — WordPress Developer & Digital Marketer &gt;</p>
+  <p>Built with <span>❤</span> — 2025</p>
 </footer>
 
 <script>
-const phrases=['Laravel Developer','WordPress Expert','Digital Marketer','SEO Specialist','ERP System Builder'];
-let pi=0,ci=0,del=false;
-function type(){
-  const el=document.getElementById('typed');
-  if(!el)return;
-  const w=phrases[pi];
-  if(!del){el.textContent=w.substring(0,ci+1);ci++;if(ci===w.length){del=true;setTimeout(type,1800);return;}}
-  else{el.textContent=w.substring(0,ci-1);ci--;if(ci===0){del=false;pi=(pi+1)%phrases.length;}}
-  setTimeout(type,del?50:100);
+// Custom Cursor
+const cursor=document.getElementById('cursor');
+const cursorFollow=document.getElementById('cursorFollow');
+let mouseX=0,mouseY=0,followX=0,followY=0;
+document.addEventListener('mousemove',e=>{
+  mouseX=e.clientX;mouseY=e.clientY;
+  cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';
+});
+function animateCursor(){
+  followX+=(mouseX-followX)*0.1;
+  followY+=(mouseY-followY)*0.1;
+  cursorFollow.style.left=followX+'px';cursorFollow.style.top=followY+'px';
+  requestAnimationFrame(animateCursor);
 }
-type();
+animateCursor();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2)';cursorFollow.style.width='60px';cursorFollow.style.height='60px'});
+  el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';cursorFollow.style.width='40px';cursorFollow.style.height='40px'});
+});
 
-const observer=new IntersectionObserver((entries)=>{
+// Scroll Reveal
+const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add('visible');
-      e.target.querySelectorAll('.sk-fill').forEach(f=>{
+      e.target.querySelectorAll('.skill-bento-fill').forEach(f=>{
         setTimeout(()=>{f.style.width=f.dataset.w;},200);
       });
     }
