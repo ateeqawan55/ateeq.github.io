@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ateeq Awan — Full Stack Developer</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#050510;color:#e2e8f0;font-family:'Inter',sans-serif;overflow-x:hidden}
+
+nav{background:rgba(5,5,16,0.95);border-bottom:1px solid #1e293b;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
+.logo{font-family:'Fira Code',monospace;color:#38bdf8;font-size:18px}
+.logo span{color:#fff}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:#64748b;font-size:13px;text-decoration:none;transition:color 0.2s;cursor:pointer;font-family:'Fira Code',monospace}
+.nav-links a:hover{color:#38bdf8}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:50px 50px}
+.hero-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1000px;width:100%;position:relative;z-index:1}
+.hero-tag{font-family:'Fira Code',monospace;color:#38bdf8;font-size:13px;margin-bottom:16px;opacity:0;animation:fadeUp 0.6s 0.2s forwards}
+.hero-name{font-size:52px;font-weight:600;color:#f8fafc;line-height:1.1;margin-bottom:12px;opacity:0;animation:fadeUp 0.6s 0.4s forwards}
+.hero-name span{color:#38bdf8}
+.hero-role{font-family:'Fira Code',monospace;color:#38bdf8;font-size:20px;margin-bottom:20px;min-height:30px;opacity:0;animation:fadeUp 0.6s 0.6s forwards}
+.hero-desc{color:#64748b;font-size:15px;line-height:1.8;margin-bottom:32px;opacity:0;animation:fadeUp 0.6s 0.8s forwards}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.6s 1s forwards}
+.btn-p{background:#38bdf8;color:#050510;padding:12px 28px;border-radius:8px;font-size:14px;border:none;cursor:pointer;font-weight:500;font-family:'Inter',sans-serif;transition:transform 0.2s;text-decoration:none;display:inline-block}
+.btn-p:hover{transform:translateY(-2px)}
+.btn-o{background:transparent;color:#38bdf8;padding:12px 28px;border-radius:8px;font-size:14px;border:1px solid #38bdf8;cursor:pointer;font-family:'Inter',sans-serif;transition:transform 0.2s;text-decoration:none;display:inline-block}
+.btn-o:hover{transform:translateY(-2px)}
+
+.hero-right{display:flex;justify-content:center;opacity:0;animation:fadeUp 0.6s 0.5s forwards}
+.avatar-wrap{position:relative;width:280px;height:280px}
+.avatar-ring{width:280px;height:280px;border-radius:50%;border:2px solid #38bdf8;display:flex;align-items:center;justify-content:center;position:relative;animation:rotate 8s linear infinite}
+.avatar-ring::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(56,189,248,0.3)}
+@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.avatar-inner{width:260px;height:260px;border-radius:50%;background:linear-gradient(135deg,#0f172a,#1e293b);border:3px solid #0d0d1a;display:flex;align-items:center;justify-content:center;animation:rotate 8s linear infinite reverse;overflow:hidden}
+.avatar-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.avatar-placeholder{font-family:'Inter',sans-serif;font-size:72px;font-weight:600;color:#38bdf8}
+.status-dot{position:absolute;bottom:20px;right:20px;background:#10b981;width:16px;height:16px;border-radius:50%;border:3px solid #050510;animation:pulse 2s infinite;z-index:2}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.4)}50%{box-shadow:0 0 0 8px rgba(16,185,129,0)}}
+.fbadge{position:absolute;background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:8px 12px;font-size:12px;color:#94a3b8;white-space:nowrap;font-family:'Fira Code',monospace;z-index:3}
+.fbadge:nth-child(3){top:10%;left:-30px;animation:float1 3s ease-in-out infinite}
+.fbadge:nth-child(4){bottom:15%;right:-30px;animation:float2 3s ease-in-out infinite 1s}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+.section{padding:80px 40px;max-width:1100px;margin:0 auto}
+.sec-label{font-family:'Fira Code',monospace;color:#38bdf8;font-size:13px;margin-bottom:8px}
+.sec-title{font-size:32px;font-weight:600;color:#f8fafc;margin-bottom:48px}
+.sec-title span{color:#38bdf8}
+
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px}
+.stat-c{background:#0d0d1a;border:1px solid #1e293b;border-radius:12px;padding:24px;text-align:center;transition:border-color 0.3s,transform 0.3s}
+.stat-c:hover{border-color:#38bdf8;transform:translateY(-4px)}
+.stat-n{font-size:36px;font-weight:600;color:#38bdf8;font-family:'Fira Code',monospace}
+.stat-l{color:#64748b;font-size:13px;margin-top:4px}
+
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sk-card{background:#0d0d1a;border:1px solid #1e293b;border-radius:12px;padding:20px;text-align:center;transition:all 0.3s}
+.sk-card:hover{border-color:#38bdf8;transform:translateY(-4px);background:#0f172a}
+.sk-icon{font-size:28px;color:#38bdf8;margin-bottom:10px}
+.sk-name{color:#e2e8f0;font-size:13px;margin-bottom:10px;font-weight:500}
+.sk-bar{background:#1a1a2e;border-radius:4px;height:4px;overflow:hidden}
+.sk-fill{height:4px;border-radius:4px;background:linear-gradient(90deg,#38bdf8,#6366f1);width:0%;transition:width 1.5s ease}
+.sk-pct{color:#38bdf8;font-size:11px;margin-top:4px;font-family:'Fira Code',monospace}
+
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.proj-card{background:#0d0d1a;border:1px solid #1e293b;border-radius:16px;overflow:hidden;transition:all 0.3s}
+.proj-card:hover{border-color:#38bdf8;transform:translateY(-6px)}
+.proj-full{grid-column:1/-1}
+.proj-img-placeholder{width:100%;height:200px;background:linear-gradient(135deg,#0f172a,#1e293b);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#334155;font-family:'Fira Code',monospace;font-size:13px}
+.proj-img-placeholder i{font-size:40px;color:#334155}
+.proj-img-placeholder img{width:100%;height:200px;object-fit:cover}
+.proj-body{padding:20px}
+.proj-tag{display:inline-block;background:#0f2a3f;color:#38bdf8;font-size:11px;padding:4px 12px;border-radius:20px;margin-bottom:10px;font-family:'Fira Code',monospace}
+.proj-title{color:#f8fafc;font-size:17px;font-weight:600;margin-bottom:8px}
+.proj-desc{color:#64748b;font-size:13px;line-height:1.7;margin-bottom:16px}
+.proj-techs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tech-b{background:#1a1a2e;color:#94a3b8;font-size:11px;padding:4px 10px;border-radius:20px;font-family:'Fira Code',monospace}
+.proj-link{color:#38bdf8;font-size:13px;text-decoration:none;font-family:'Fira Code',monospace}
+.proj-link:hover{text-decoration:underline}
+
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.con-item{background:#0d0d1a;border:1px solid #1e293b;border-radius:12px;padding:20px;display:flex;align-items:center;gap:16px;transition:all 0.3s}
+.con-item:hover{border-color:#38bdf8;transform:translateX(4px)}
+.con-icon{width:44px;height:44px;background:#0f2a3f;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#38bdf8;font-size:20px;flex-shrink:0}
+.con-label{color:#64748b;font-size:11px;font-family:'Fira Code',monospace}
+.con-val{color:#e2e8f0;font-size:14px;font-weight:500;margin-top:2px}
+
+.edu-list{display:flex;flex-direction:column;gap:12px}
+.edu-item{background:#0d0d1a;border:1px solid #1e293b;border-radius:12px;padding:20px;display:flex;justify-content:space-between;align-items:center;transition:all 0.3s}
+.edu-item:hover{border-color:#38bdf8;transform:translateX(4px)}
+.edu-dot{width:10px;height:10px;border-radius:50%;background:#38bdf8;margin-right:16px;flex-shrink:0}
+.edu-t{color:#f8fafc;font-size:15px;font-weight:500}
+.edu-s{color:#64748b;font-size:13px;margin-top:3px}
+.edu-y{color:#38bdf8;font-family:'Fira Code',monospace;font-size:14px}
+
+.scroll-reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s,transform 0.6s}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+footer{background:#0d0d1a;border-top:1px solid #1e293b;padding:24px 40px;text-align:center}
+footer p{color:#334155;font-family:'Fira Code',monospace;font-size:13px}
+footer span{color:#38bdf8}
+
+@media(max-width:768px){
+.hero-content{grid-template-columns:1fr;text-align:center}
+.hero-right{display:none}
+.stats-row{grid-template-columns:repeat(2,1fr)}
+.skills-grid{grid-template-columns:repeat(2,1fr)}
+.projects-grid{grid-template-columns:1fr}
+.contact-grid{grid-template-columns:1fr}
+.nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">&lt;<span>Ateeq Awan</span> /&gt;</div>
+  <div class="nav-links">
+    <a href="#about">about</a>
+    <a href="#skills">skills</a>
+    <a href="#projects">projects</a>
+    <a href="#education">education</a>
+    <a href="#contact">contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag">// Hello World 👋</div>
+      <div class="hero-name">Hi, I'm <span>Ateeq</span><br>Awan</div>
+      <div class="hero-role"><span id="typed"></span><span style="animation:blink 1s infinite;color:#38bdf8">|</span></div>
+      <div class="hero-desc">Passionate Full Stack Developer & Digital Marketer from Islamabad, Pakistan. I build complete web solutions — from WordPress sites to full ERP systems.</div>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-p">View My Work</a>
+        <a href="#contact" class="btn-o">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="avatar-wrap">
+        <div class="avatar-ring">
+          <div class="avatar-inner">
+            <!-- APNI PHOTO YAHAN ADD KARO: <img src="photo.jpg" alt="Ateeq Awan"> -->
+            <span class="avatar-placeholder">AA</span>
+          </div>
+        </div>
+        <div class="status-dot"></div>
+        <div class="fbadge">⚡ Laravel Dev</div>
+        <div class="fbadge">🎯 SEO Expert</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="about" style="border-top:1px solid #1a1a2e;background:#07070f;padding:80px 0">
+  <div class="section">
+    <div class="sec-label scroll-reveal">// about me</div>
+    <div class="sec-title scroll-reveal">About <span>Me</span></div>
+    <div class="stats-row scroll-reveal">
+      <div class="stat-c"><div class="stat-n">2+</div><div class="stat-l">Years Experience</div></div>
+      <div class="stat-c"><div class="stat-n">2+</div><div class="stat-l">Projects Done</div></div>
+      <div class="stat-c"><div class="stat-n">5+</div><div class="stat-l">Skills</div></div>
+      <div class="stat-c"><div class="stat-n">BS</div><div class="stat-l">CS 4th Semester</div></div>
+    </div>
+    <p class="scroll-reveal" style="color:#94a3b8;font-size:15px;line-height:1.9;max-width:700px">
+      I am a self-driven developer and digital marketer with 2+ years of hands-on experience. I have worked at <strong style="color:#38bdf8">Karwan Solution</strong> (IT company, Mansehra) and built complete web solutions for multiple clients. I specialize in WordPress Development, Laravel PHP, SEO, and running Facebook & Instagram Ads.
+    </p>
+  </div>
+</div>
+
+<div id="skills" style="border-top:1px solid #1a1a2e;padding:80px 0">
+  <div class="section">
+    <div class="sec-label scroll-reveal">// my skills</div>
+    <div class="sec-title scroll-reveal">What I <span>Know</span></div>
+    <div class="skills-grid scroll-reveal">
+      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-wordpress"></i></div><div class="sk-name">WordPress</div><div class="sk-bar"><div class="sk-fill" data-w="90%"></div></div><div class="sk-pct">90%</div></div>
+      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-php"></i></div><div class="sk-name">PHP / Laravel</div><div class="sk-bar"><div class="sk-fill" data-w="75%"></div></div><div class="sk-pct">75%</div></div>
+      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-html5"></i></div><div class="sk-name">HTML / CSS</div><div class="sk-bar"><div class="sk-fill" data-w="80%"></div></div><div class="sk-pct">80%</div></div>
+      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-bootstrap"></i></div><div class="sk-name">Bootstrap</div><div class="sk-bar"><div class="sk-fill" data-w="80%"></div></div><div class="sk-pct">80%</div></div>
+      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-javascript"></i></div><div class="sk-name">jQuery / JS</div><div class="sk-bar"><div class="sk-fill" data-w="65%"></div></div><div class="sk-pct">65%</div></div>
+      <div class="sk-card"><div class="sk-icon"><i class="ti ti-search"></i></div><div class="sk-name">Off Page SEO</div><div class="sk-bar"><div class="sk-fill" data-w="70%"></div></div><div class="sk-pct">70%</div></div>
+      <div class="sk-card"><div class="sk-icon"><i class="ti ti-brand-facebook"></i></div><div class="sk-name">Facebook Ads</div><div class="sk-bar"><div class="sk-fill" data-w="75%"></div></div><div class="sk-pct">75%</div></div>
+      <div class="sk-card"><div class="sk-icon"><i class="ti ti-speakerphone"></i></div><div class="sk-name">Digital Marketing</div><div class="sk-bar"><div class="sk-fill" data-w="80%"></div></div><div class="sk-pct">80%</div></div>
+    </div>
+  </div>
+</div>
+
+<div id="projects" style="border-top:1px solid #1a1a2e;background:#07070f;padding:80px 0">
+  <div class="section">
+    <div class="sec-label scroll-reveal">// my work</div>
+    <div class="sec-title scroll-reveal">Featured <span>Projects</span></div>
+    <div class="projects-grid">
+      <div class="proj-card proj-full scroll-reveal">
+        <div class="proj-img-placeholder">
+          <!-- ERP SCREENSHOT: <img src="erp-screenshot.png" alt="ERP System"> -->
+          <i class="ti ti-layout-dashboard"></i>
+          <span>// ERP System Screenshot — Replace karo apni image se</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag">Laravel / PHP — Featured Project ⭐</div>
+          <div class="proj-title">ERP System — Complete Business Solution</div>
+          <div class="proj-desc">Full-featured Enterprise Resource Planning system built from scratch using Laravel. Includes HR management, attendance with auto status, inventory, POS cash counter, invoicing, CRM, project management, and real-time dashboard charts.</div>
+          <div class="proj-techs">
+            <span class="tech-b">Laravel</span><span class="tech-b">MySQL</span><span class="tech-b">Bootstrap 5</span><span class="tech-b">Chart.js</span><span class="tech-b">DomPDF</span><span class="tech-b">XAMPP</span>
+          </div>
+          <span class="proj-link">localhost:8000 — Local Project</span>
+        </div>
+      </div>
+
+      <div class="proj-card scroll-reveal">
+        <div class="proj-img-placeholder">
+          <!-- SCREENSHOT: <img src="emarkingsolution.png" alt="eMarking Solution"> -->
+          <i class="ti ti-world"></i>
+          <span>// eMarkingSolution screenshot lagao</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag">WordPress</div>
+          <div class="proj-title">eMarking Solution</div>
+          <div class="proj-desc">Professional business website built on WordPress with custom design, SEO optimization, and digital marketing setup.</div>
+          <div class="proj-techs">
+            <span class="tech-b">WordPress</span><span class="tech-b">SEO</span><span class="tech-b">PHP</span>
+          </div>
+          <a href="https://emarkingsolution.com/" target="_blank" class="proj-link">emarkingsolution.com →</a>
+        </div>
+      </div>
+
+      <div class="proj-card scroll-reveal">
+        <div class="proj-img-placeholder">
+          <!-- SCREENSHOT: <img src="smartbookerp.png" alt="SmartBook ERP"> -->
+          <i class="ti ti-brand-wordpress"></i>
+          <span>// SmartBook ERP screenshot lagao</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag">WordPress</div>
+          <div class="proj-title">SmartBook ERP Website</div>
+          <div class="proj-desc">WordPress-based ERP showcase website with professional design, custom layouts, and complete digital presence setup.</div>
+          <div class="proj-techs">
+            <span class="tech-b">WordPress</span><span class="tech-b">CSS</span><span class="tech-b">SEO</span>
+          </div>
+          <a href="https://smartbookerp.com/" target="_blank" class="proj-link">smartbookerp.com →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="education" style="border-top:1px solid #1a1a2e;padding:80px 0">
+  <div class="section">
+    <div class="sec-label scroll-reveal">// education</div>
+    <div class="sec-title scroll-reveal">My <span>Education</span></div>
+    <div class="edu-list">
+      <div class="edu-item scroll-reveal">
+        <div style="display:flex;align-items:center"><div class="edu-dot"></div><div><div class="edu-t">BS Computer Science</div><div class="edu-s">4th Semester — In Progress</div></div></div>
+        <div class="edu-y">2023 — Present</div>
+      </div>
+      <div class="edu-item scroll-reveal">
+        <div style="display:flex;align-items:center"><div class="edu-dot"></div><div><div class="edu-t">FSC Pre-Engineering</div><div class="edu-s">BISE Abbottabad</div></div></div>
+        <div class="edu-y">2023</div>
+      </div>
+      <div class="edu-item scroll-reveal">
+        <div style="display:flex;align-items:center"><div class="edu-dot"></div><div><div class="edu-t">SSC (Matric)</div><div class="edu-s">BISE Abbottabad</div></div></div>
+        <div class="edu-y">2021</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="contact" style="border-top:1px solid #1a1a2e;background:#07070f;padding:80px 0">
+  <div class="section">
+    <div class="sec-label scroll-reveal">// contact me</div>
+    <div class="sec-title scroll-reveal">Get In <span>Touch</span></div>
+    <div class="contact-grid scroll-reveal">
+      <div class="con-item"><div class="con-icon"><i class="ti ti-phone"></i></div><div><div class="con-label">// phone</div><div class="con-val">0334-0970941</div></div></div>
+      <div class="con-item"><div class="con-icon"><i class="ti ti-mail"></i></div><div><div class="con-label">// email</div><div class="con-val">ateeqawan744@gmail.com</div></div></div>
+      <div class="con-item"><div class="con-icon"><i class="ti ti-map-pin"></i></div><div><div class="con-label">// location</div><div class="con-val">Margalla Town, Islamabad</div></div></div>
+      <div class="con-item"><div class="con-icon"><i class="ti ti-briefcase"></i></div><div><div class="con-label">// status</div><div class="con-val" style="color:#10b981">Available for Work ✓</div></div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&lt;/ Made with <span>❤</span> by <span>Ateeq Awan</span> — Full Stack Developer &gt;</p>
+</footer>
+
+<script>
+const phrases=['Laravel Developer','WordPress Expert','Digital Marketer','SEO Specialist','ERP System Builder'];
+let pi=0,ci=0,del=false;
+function type(){
+  const el=document.getElementById('typed');
+  if(!el)return;
+  const w=phrases[pi];
+  if(!del){el.textContent=w.substring(0,ci+1);ci++;if(ci===w.length){del=true;setTimeout(type,1800);return;}}
+  else{el.textContent=w.substring(0,ci-1);ci--;if(ci===0){del=false;pi=(pi+1)%phrases.length;}}
+  setTimeout(type,del?50:100);
+}
+type();
+
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.sk-fill').forEach(f=>{
+        setTimeout(()=>{f.style.width=f.dataset.w;},200);
+      });
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.scroll-reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
