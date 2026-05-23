@@ -190,6 +190,63 @@
         /* Scroll animation */
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Typing Animation */
+        .typing-text { border-right: 3px solid var(--orange); white-space: nowrap; overflow: hidden; animation: typing 3s steps(30, end), blink 0.75s step-end infinite; }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--orange); } }
+
+        /* Float Animation - Image */
+        .float-img { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+
+        /* Pulse Animation - Buttons */
+        .btn-hero { animation: pulse-orange 2s infinite; }
+        @keyframes pulse-orange { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); } 70% { box-shadow: 0 0 0 10px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
+
+        /* Slide In Left */
+        .slide-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s ease; }
+        .slide-left.visible { opacity: 1; transform: translateX(0); }
+
+        /* Slide In Right */
+        .slide-right { opacity: 0; transform: translateX(50px); transition: all 0.8s ease; }
+        .slide-right.visible { opacity: 1; transform: translateX(0); }
+
+        /* Zoom In */
+        .zoom-in { opacity: 0; transform: scale(0.8); transition: all 0.6s ease; }
+        .zoom-in.visible { opacity: 1; transform: scale(1); }
+
+        /* Skill bar animation */
+        .skill-fill { width: 0 !important; transition: width 1.5s ease-in-out; }
+        .skill-fill.animate { width: var(--target-width) !important; }
+
+        /* Card hover glow */
+        .project-card:hover { box-shadow: 0 10px 40px rgba(249,115,22,0.3); }
+        .contact-card:hover { box-shadow: 0 10px 40px rgba(26,60,110,0.2); }
+        .skill-card:hover { box-shadow: 0 10px 40px rgba(249,115,22,0.2); transform: translateX(5px); transition: all 0.3s; }
+
+        /* ERP feature hover */
+        .erp-feature { transition: all 0.3s; }
+        .erp-feature:hover { background: rgba(249,115,22,0.2); transform: translateX(8px); }
+
+        /* Stats counter animation */
+        .stat-item h3 { transition: all 0.3s; }
+        .stats:hover .stat-item h3 { transform: scale(1.1); }
+
+        /* Navbar scroll effect */
+        .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+
+        /* Hero badge hover */
+        .hero-badge { transition: all 0.3s; }
+        .hero-badge:hover { background: var(--orange); color: white; transform: translateY(-3px); }
+
+        /* Rotating border on image */
+        @keyframes rotate-border { 0% { box-shadow: 0 0 0 4px var(--orange), 0 0 20px rgba(249,115,22,0.3); } 50% { box-shadow: 0 0 0 4px #f97316, 0 0 40px rgba(249,115,22,0.6); } 100% { box-shadow: 0 0 0 4px var(--orange), 0 0 20px rgba(249,115,22,0.3); } }
+        .profile-img { animation: float 3s ease-in-out infinite, rotate-border 2s ease-in-out infinite; }
+
+        /* Section title underline animation */
+        .section-line { transition: width 0.8s ease; width: 0; }
+        .section-line.visible { width: 60px; }
     </style>
 </head>
 <body>
@@ -217,7 +274,7 @@
 <section class="hero">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-8">
+            <div class="col-lg-8 slide-left">
                 <p style="color: var(--orange); font-size: 18px; margin-bottom: 10px;">
                     <i class="fas fa-hand-wave"></i> Hello, I'm
                 </p>
@@ -225,20 +282,18 @@
                 <p>WordPress Developer | Digital Marketer | Laravel ERP Developer</p>
                 <div class="my-3">
                     <span class="hero-badge"><i class="fab fa-wordpress me-1"></i> WordPress Dev</span>
-                    <span class="hero-badge"><i class="fas fa-search me-1"></i> OFF Page SEO Expert</span>
+                    <span class="hero-badge"><i class="fas fa-search me-1"></i> SEO Expert</span>
                     <span class="hero-badge"><i class="fas fa-bullhorn me-1"></i> Digital Marketing</span>
                     <span class="hero-badge"><i class="fab fa-laravel me-1"></i> Laravel Dev</span>
                     <span class="hero-badge"><i class="fas fa-database me-1"></i> MySQL</span>
-                    <span class="hero-badge"><i class="fas fa-database me-1"></i>Social Media Marketing</span>
-                    
                 </div>
                 <div class="mt-4">
                     <a href="#projects" class="btn-hero"><i class="fas fa-eye me-2"></i>View My Work</a>
                     <a href="#contact" class="btn-hero-outline"><i class="fas fa-envelope me-2"></i>Hire Me</a>
                 </div>
             </div>
-            <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                <div style="width: 220px; height: 220px; border-radius: 50%; margin: 0 auto; border: 4px solid var(--orange); overflow: hidden; box-shadow: 0 0 30px rgba(249,115,22,0.4);">
+            <div class="col-lg-4 text-center mt-4 mt-lg-0 slide-right">
+                <div class="profile-img" style="width: 220px; height: 220px; border-radius: 50%; margin: 0 auto; border: 4px solid var(--orange); overflow: hidden; box-shadow: 0 0 30px rgba(249,115,22,0.4);">
                     <img src="ateeq.jpg" alt="Ateeq Awan" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
                 </div>
                 <div class="mt-3">
@@ -248,7 +303,7 @@
                     </p>
                     <p style="color: rgba(255,255,255,0.7); font-size: 14px;">
                         <i class="fas fa-graduation-cap me-1" style="color: var(--orange);"></i>
-                        BS Computer Science (5th Semester)
+                        BS Computer Science (4th Semester)
                     </p>
                 </div>
             </div>
@@ -261,25 +316,25 @@
     <div class="container">
         <div class="row">
             <div class="col-6 col-md-3">
-                <div class="stat-item">
+                <div class="stat-item zoom-in">
                     <h3>2+</h3>
                     <p>Years Experience</p>
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="stat-item">
+                <div class="stat-item zoom-in">
                     <h3>10+</h3>
                     <p>Projects Completed</p>
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="stat-item">
+                <div class="stat-item zoom-in">
                     <h3>1</h3>
                     <p>ERP System Built</p>
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="stat-item">
+                <div class="stat-item zoom-in">
                     <h3>100%</h3>
                     <p>Client Satisfaction</p>
                 </div>
@@ -298,7 +353,7 @@
                 <p style="color: #555; line-height: 1.8; font-size: 16px;">
                     I am <strong>Ateeq Awan</strong>, a passionate web developer and digital marketer from Islamabad, Pakistan.
                     Currently pursuing BS Computer Science (4th Semester), I have hands-on experience in WordPress Development,
-                    Digital Marketing, SEO, Social Media Marketing, and Laravel development.
+                    Digital Marketing, SEO, and Laravel development.
                 </p>
                 <p style="color: #555; line-height: 1.8; font-size: 16px; margin-top: 15px;">
                     I have 2 years of experience in WordPress Development and worked at <strong>Karwan Solution</strong>
@@ -333,7 +388,7 @@
                     <div class="mb-4">
                         <span style="background: var(--orange); color: white; padding: 3px 10px; border-radius: 20px; font-size: 12px;">Continue</span>
                         <h5 style="margin-top: 8px; color: var(--primary);">BS Computer Science</h5>
-                        <p style="color: #888;">5th Semester | Currently Studying</p>
+                        <p style="color: #888;">4th Semester | Currently Studying</p>
                     </div>
                     <div class="mb-4">
                         <span style="background: var(--primary); color: white; padding: 3px 10px; border-radius: 20px; font-size: 12px;">2023</span>
@@ -358,63 +413,63 @@
         <div class="section-line mx-auto"></div>
         <div class="row">
             <div class="col-md-6">
-                <div class="skill-card">
+                <div class="skill-card fade-in">
                     <div class="d-flex justify-content-between">
                         <span><i class="fab fa-wordpress me-2" style="color: var(--orange);"></i>WordPress Development</span>
                         <span style="color: var(--orange);">90%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 90%;" data-width="90%"></div></div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-in">
                     <div class="d-flex justify-content-between">
                         <span><i class="fas fa-search me-2" style="color: var(--orange);"></i>Off Page SEO</span>
                         <span style="color: var(--orange);">80%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 80%;" data-width="80%"></div></div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-in">
                     <div class="d-flex justify-content-between">
                         <span><i class="fas fa-bullhorn me-2" style="color: var(--orange);"></i>Digital Marketing</span>
                         <span style="color: var(--orange);">85%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 85%;" data-width="85%"></div></div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-in">
                     <div class="d-flex justify-content-between">
                         <span><i class="fas fa-share-alt me-2" style="color: var(--orange);"></i>Social Media Marketing</span>
                         <span style="color: var(--orange);">85%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 85%;" data-width="85%"></div></div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="skill-card">
+                <div class="skill-card fade-in">
                     <div class="d-flex justify-content-between">
                         <span><i class="fab fa-html5 me-2" style="color: var(--orange);"></i>HTML & CSS</span>
                         <span style="color: var(--orange);">75%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 75%;"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 75%;" data-width="75%"></div></div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-in">
                     <div class="d-flex justify-content-between">
                         <span><i class="fab fa-bootstrap me-2" style="color: var(--orange);"></i>Bootstrap & jQuery</span>
                         <span style="color: var(--orange);">70%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 70%;"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 70%;" data-width="70%"></div></div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-in">
                     <div class="d-flex justify-content-between">
                         <span><i class="fab fa-php me-2" style="color: var(--orange);"></i>PHP & Laravel</span>
                         <span style="color: var(--orange);">65%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 65%;"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 65%;" data-width="65%"></div></div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-in">
                     <div class="d-flex justify-content-between">
                         <span><i class="fas fa-database me-2" style="color: var(--orange);"></i>MySQL Database</span>
                         <span style="color: var(--orange);">70%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 70%;"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 70%;" data-width="70%"></div></div>
                 </div>
             </div>
         </div>
@@ -428,7 +483,7 @@
         <div class="section-line mx-auto"></div>
         <div class="row align-items-stretch">
             <div class="col-md-4">
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-header">
                         <i class="fas fa-globe fa-2x mb-3"></i>
                         <h5>eMarketing Solution</h5>
@@ -448,7 +503,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-header orange">
                         <i class="fas fa-moon fa-2x mb-3"></i>
                         <h5>Urwatulemaan</h5>
@@ -468,7 +523,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-header green">
                         <i class="fas fa-share-alt fa-2x mb-3"></i>
                         <h5>Social Media Marketing Campaign</h5>
@@ -499,66 +554,66 @@
         </p>
         <div class="row">
             <div class="col-md-4">
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-box me-2" style="color: var(--orange);"></i>
                     <strong>Inventory Management</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Stock tracking with low stock alerts</p>
                 </div>
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-users me-2" style="color: var(--orange);"></i>
                     <strong>HR & Employee Management</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Complete employee management system</p>
                 </div>
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-clock me-2" style="color: var(--orange);"></i>
                     <strong>Attendance System</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Employee time and attendance tracking</p>
                 </div>
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-file-pdf me-2" style="color: var(--orange);"></i>
                     <strong>Salary Slip PDF</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Generate professional salary slips</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-shopping-cart me-2" style="color: var(--orange);"></i>
                     <strong>Sales & Orders</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Complete order management with PDF</p>
                 </div>
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-cash-register me-2" style="color: var(--orange);"></i>
                     <strong>POS System</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Point of sale with receipt printing</p>
                 </div>
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-file-invoice-dollar me-2" style="color: var(--orange);"></i>
                     <strong>Invoices & PDF</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Professional invoice generation</p>
                 </div>
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-shopping-basket me-2" style="color: var(--orange);"></i>
                     <strong>Purchase Orders</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Vendor and purchase management</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-funnel-dollar me-2" style="color: var(--orange);"></i>
                     <strong>CRM & Leads</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Lead tracking and management</p>
                 </div>
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-project-diagram me-2" style="color: var(--orange);"></i>
                     <strong>Project Management</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Track projects and budgets</p>
                 </div>
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-chart-bar me-2" style="color: var(--orange);"></i>
                     <strong>Reports & Charts</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Business analytics and PDF reports</p>
                 </div>
-                <div class="erp-feature">
+                <div class="erp-feature fade-in">
                     <i class="fas fa-bell me-2" style="color: var(--orange);"></i>
                     <strong>Notifications</strong>
                     <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Real-time alerts and notifications</p>
@@ -587,7 +642,7 @@
         </p>
         <div class="row justify-content-center">
             <div class="col-md-3">
-                <div class="contact-card">
+                <div class="contact-card fade-in">
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
@@ -597,7 +652,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="contact-card">
+                <div class="contact-card fade-in">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
@@ -607,7 +662,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="contact-card">
+                <div class="contact-card fade-in">
                     <div class="contact-icon">
                         <i class="fab fa-whatsapp"></i>
                     </div>
@@ -617,7 +672,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="contact-card">
+                <div class="contact-card fade-in">
                     <div class="contact-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
@@ -643,14 +698,79 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+// Intersection Observer for animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
         }
     });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in, .slide-left, .slide-right, .zoom-in, .section-line').forEach(el => observer.observe(el));
+
+// Skill bar animation
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width;
+                bar.classList.add('animate');
+            });
+        }
+    });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.skill-card').forEach(el => skillObserver.observe(el));
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Counter animation for stats
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll('h3');
+            counters.forEach(counter => {
+                const target = counter.innerText.replace('+', '').replace('%', '');
+                const suffix = counter.innerText.includes('+') ? '+' : counter.innerText.includes('%') ? '%' : '';
+                let count = 0;
+                const increment = target / 30;
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        counter.innerText = target + suffix;
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = Math.floor(count) + suffix;
+                    }
+                }, 50);
+            });
+        }
+    });
+}, { threshold: 0.5 });
+
+const statsSection = document.querySelector('.stats');
+if (statsSection) counterObserver.observe(statsSection);
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
 </script>
 </body>
 </html>
