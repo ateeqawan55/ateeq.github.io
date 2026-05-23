@@ -110,8 +110,17 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             margin-bottom: 25px;
             transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         .project-card:hover { transform: translateY(-5px); }
+        .project-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
         .project-header {
             background: linear-gradient(135deg, var(--primary), #2d6abf);
             padding: 30px;
@@ -415,7 +424,7 @@
     <div class="container">
         <h2 class="section-title text-center">My <span>Projects</span></h2>
         <div class="section-line mx-auto"></div>
-        <div class="row">
+        <div class="row align-items-stretch">
             <div class="col-md-4">
                 <div class="project-card">
                     <div class="project-header">
