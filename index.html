@@ -154,6 +154,54 @@
             border-left: 3px solid var(--orange);
         }
 
+        /* LMS Section */
+        .lms-section {
+            background: linear-gradient(135deg, #0d2447 0%, #1a3c6e 100%);
+            padding: 80px 0;
+            color: white;
+        }
+        .lms-feature {
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            border-left: 3px solid #f97316;
+            transition: all 0.3s;
+        }
+        .lms-feature:hover {
+            background: rgba(249,115,22,0.2);
+            transform: translateX(8px);
+        }
+        .lms-badge {
+            display: inline-block;
+            background: rgba(249,115,22,0.2);
+            border: 1px solid var(--orange);
+            color: var(--orange);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 4px;
+        }
+        .lms-stats-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            border: 1px solid rgba(249,115,22,0.3);
+        }
+        .lms-stats-box h4 {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--orange);
+            margin: 0;
+        }
+        .lms-stats-box p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            margin: 5px 0 0;
+        }
+
         /* Contact */
         .contact-card {
             background: white;
@@ -187,64 +235,30 @@
         }
         footer span { color: var(--orange); }
 
-        /* Scroll animation */
+        /* Animations */
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* Typing Animation */
-        .typing-text { border-right: 3px solid var(--orange); white-space: nowrap; overflow: hidden; animation: typing 3s steps(30, end), blink 0.75s step-end infinite; }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--orange); } }
-
-        /* Float Animation - Image */
-        .float-img { animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-
-        /* Pulse Animation - Buttons */
-        .btn-hero { animation: pulse-orange 2s infinite; }
-        @keyframes pulse-orange { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); } 70% { box-shadow: 0 0 0 10px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
-
-        /* Slide In Left */
         .slide-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s ease; }
         .slide-left.visible { opacity: 1; transform: translateX(0); }
-
-        /* Slide In Right */
         .slide-right { opacity: 0; transform: translateX(50px); transition: all 0.8s ease; }
         .slide-right.visible { opacity: 1; transform: translateX(0); }
-
-        /* Zoom In */
         .zoom-in { opacity: 0; transform: scale(0.8); transition: all 0.6s ease; }
         .zoom-in.visible { opacity: 1; transform: scale(1); }
-
-        /* Skill bar animation */
         .skill-fill { width: 0 !important; transition: width 1.5s ease-in-out; }
         .skill-fill.animate { width: var(--target-width) !important; }
-
-        /* Card hover glow */
         .project-card:hover { box-shadow: 0 10px 40px rgba(249,115,22,0.3); }
         .contact-card:hover { box-shadow: 0 10px 40px rgba(26,60,110,0.2); }
         .skill-card:hover { box-shadow: 0 10px 40px rgba(249,115,22,0.2); transform: translateX(5px); transition: all 0.3s; }
-
-        /* ERP feature hover */
         .erp-feature { transition: all 0.3s; }
         .erp-feature:hover { background: rgba(249,115,22,0.2); transform: translateX(8px); }
-
-        /* Stats counter animation */
-        .stat-item h3 { transition: all 0.3s; }
-        .stats:hover .stat-item h3 { transform: scale(1.1); }
-
-        /* Navbar scroll effect */
         .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-
-        /* Hero badge hover */
         .hero-badge { transition: all 0.3s; }
         .hero-badge:hover { background: var(--orange); color: white; transform: translateY(-3px); }
-
-        /* Rotating border on image */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
         @keyframes rotate-border { 0% { box-shadow: 0 0 0 4px var(--orange), 0 0 20px rgba(249,115,22,0.3); } 50% { box-shadow: 0 0 0 4px #f97316, 0 0 40px rgba(249,115,22,0.6); } 100% { box-shadow: 0 0 0 4px var(--orange), 0 0 20px rgba(249,115,22,0.3); } }
         .profile-img { animation: float 3s ease-in-out infinite, rotate-border 2s ease-in-out infinite; }
-
-        /* Section title underline animation */
+        @keyframes pulse-orange { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); } 70% { box-shadow: 0 0 0 10px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
+        .btn-hero { animation: pulse-orange 2s infinite; }
         .section-line { transition: width 0.8s ease; width: 0; }
         .section-line.visible { width: 60px; }
     </style>
@@ -264,6 +278,7 @@
                 <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                 <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                 <li class="nav-item"><a class="nav-link" href="#erp">ERP System</a></li>
+                <li class="nav-item"><a class="nav-link" href="#lms">LMS System</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -279,13 +294,14 @@
                     <i class="fas fa-hand-wave"></i> Hello, I'm
                 </p>
                 <h1>Ateeq <span>Awan</span></h1>
-                <p>WordPress Developer | Digital Marketer | Laravel ERP Developer</p>
+                <p>WordPress Developer | Digital Marketer | Laravel ERP & LMS Developer</p>
                 <div class="my-3">
                     <span class="hero-badge"><i class="fab fa-wordpress me-1"></i> WordPress Dev</span>
                     <span class="hero-badge"><i class="fas fa-search me-1"></i> SEO Expert</span>
                     <span class="hero-badge"><i class="fas fa-bullhorn me-1"></i> Digital Marketing</span>
                     <span class="hero-badge"><i class="fab fa-laravel me-1"></i> Laravel Dev</span>
                     <span class="hero-badge"><i class="fas fa-database me-1"></i> MySQL</span>
+                    <span class="hero-badge"><i class="fas fa-book me-1"></i> LMS Developer</span>
                 </div>
                 <div class="mt-4">
                     <a href="#projects" class="btn-hero"><i class="fas fa-eye me-2"></i>View My Work</a>
@@ -329,8 +345,8 @@
             </div>
             <div class="col-6 col-md-3">
                 <div class="stat-item zoom-in">
-                    <h3>1</h3>
-                    <p>ERP System Built</p>
+                    <h3>2</h3>
+                    <p>Full Systems Built</p>
                 </div>
             </div>
             <div class="col-6 col-md-3">
@@ -357,13 +373,13 @@
                 </p>
                 <p style="color: #555; line-height: 1.8; font-size: 16px; margin-top: 15px;">
                     I have 2 years of experience in WordPress Development and worked at <strong>Karwan Solution</strong>
-                    IT company in Mansehra. I recently built a complete <strong>ERP System</strong> using Laravel & MySQL,
-                    which includes 15+ modules for business management.
+                    IT company in Mansehra. I recently built a complete <strong>ERP System</strong> and a professional
+                    <strong>Library Management System (LMS)</strong> using Laravel & MySQL.
                 </p>
                 <p style="color: #555; line-height: 1.8; font-size: 16px; margin-top: 15px;">
-                    I also have strong experience in <strong>Social Media Marketing</strong>, including running 
-                    Facebook & Instagram Ads, and managing large-scale marketing campaigns. I successfully 
-                    shared client promotional content across <strong>200+ Facebook Groups</strong>, generating 
+                    I also have strong experience in <strong>Social Media Marketing</strong>, including running
+                    Facebook & Instagram Ads, and managing large-scale marketing campaigns. I successfully
+                    shared client promotional content across <strong>200+ Facebook Groups</strong>, generating
                     significant reach and leads for my clients.
                 </p>
                 <div class="row mt-4">
@@ -379,7 +395,7 @@
                     </div>
                 </div>
                 <a href="mailto:ateeqawan744@gmail.com" class="btn-hero mt-3" style="display: inline-block;">
-                    <i class="fas fa-download me-2"></i>Hire Me
+                    <i class="fas fa-envelope me-2"></i>Hire Me
                 </a>
             </div>
             <div class="col-lg-6 mt-4 mt-lg-0">
@@ -544,7 +560,7 @@
     </div>
 </section>
 
-<!-- ERP System Highlight -->
+<!-- ERP System -->
 <section class="erp-section" id="erp">
     <div class="container">
         <h2 class="section-title text-center" style="color: white;">My Latest <span>ERP System</span></h2>
@@ -632,20 +648,134 @@
     </div>
 </section>
 
+<!-- LMS System — NEW SECTION -->
+<section class="lms-section" id="lms">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <span style="background: rgba(249,115,22,0.2); border: 1px solid var(--orange); color: var(--orange); padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: bold;">
+                <i class="fas fa-star me-1"></i> NEW PROJECT
+            </span>
+            <h2 class="section-title text-center mt-3" style="color: white;">Library Management <span>System (LMS)</span></h2>
+            <div class="section-line mx-auto" style="background: var(--orange);"></div>
+            <p style="color: rgba(255,255,255,0.8); font-size: 16px; max-width: 650px; margin: 0 auto;">
+                A complete professional Library Management System built from scratch using Laravel 12 & MySQL — featuring a beautiful dark blue & orange admin panel with 10+ modules.
+            </p>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="row g-3 mb-5">
+            <div class="col-6 col-md-3">
+                <div class="lms-stats-box fade-in">
+                    <h4>10+</h4>
+                    <p>Modules Built</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="lms-stats-box fade-in">
+                    <h4>9</h4>
+                    <p>Database Tables</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="lms-stats-box fade-in">
+                    <h4>100%</h4>
+                    <p>Responsive Design</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="lms-stats-box fade-in">
+                    <h4>Auto</h4>
+                    <p>Fine Calculation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="lms-feature fade-in">
+                    <i class="fas fa-book me-2" style="color: var(--orange);"></i>
+                    <strong>Complete Book Management</strong>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Add, edit, delete books with image upload, PDF/eBook support, ISBN, barcode & rack location</p>
+                </div>
+                <div class="lms-feature fade-in">
+                    <i class="fas fa-tags me-2" style="color: var(--orange);"></i>
+                    <strong>Categories, Authors & Publishers</strong>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Complete management of book categories, authors with bio & photo, publishers with contact info</p>
+                </div>
+                <div class="lms-feature fade-in">
+                    <i class="fas fa-user-graduate me-2" style="color: var(--orange);"></i>
+                    <strong>Student / Member Management</strong>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Auto Student ID generation, membership dates, profile photo, complete issue/fine history</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="lms-feature fade-in">
+                    <i class="fas fa-hand-holding-heart me-2" style="color: var(--orange);"></i>
+                    <strong>Issue & Return System</strong>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Issue books to students, track due dates, one-click return, automatic quantity management</p>
+                </div>
+                <div class="lms-feature fade-in">
+                    <i class="fas fa-receipt me-2" style="color: var(--orange);"></i>
+                    <strong>Automatic Fine System</strong>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Rs. 10/day fine auto-calculated on overdue returns, paid/unpaid tracking with full report</p>
+                </div>
+                <div class="lms-feature fade-in">
+                    <i class="fas fa-calendar-check me-2" style="color: var(--orange);"></i>
+                    <strong>Reservation System</strong>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Reserve books in advance, approve or cancel reservations, auto-expiry after 7 days</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="lms-feature fade-in">
+                    <i class="fas fa-chart-bar me-2" style="color: var(--orange);"></i>
+                    <strong>Reports & Analytics</strong>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Issued books, returned books, overdue books and fines reports with detailed stats</p>
+                </div>
+                <div class="lms-feature fade-in">
+                    <i class="fas fa-th-large me-2" style="color: var(--orange);"></i>
+                    <strong>Professional Dashboard</strong>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Real-time stats cards, recent activity tables, overdue alerts — all in one beautiful view</p>
+                </div>
+                <div class="lms-feature fade-in">
+                    <i class="fas fa-shield-alt me-2" style="color: var(--orange);"></i>
+                    <strong>Secure Authentication</strong>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 5px;">Login, logout, remember me, CSRF protection, role-based access control</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="text-center mt-5">
+            <p style="color: rgba(255,255,255,0.6); font-size: 13px; margin-bottom: 15px;">BUILT WITH</p>
+            <div style="background: rgba(255,255,255,0.08); border-radius: 12px; padding: 20px 30px; display: inline-block; border: 1px solid rgba(249,115,22,0.2);">
+                <span class="lms-badge"><i class="fab fa-laravel me-1"></i> Laravel 12</span>
+                <span class="lms-badge"><i class="fab fa-php me-1"></i> PHP 8.1</span>
+                <span class="lms-badge"><i class="fas fa-database me-1"></i> MySQL</span>
+                <span class="lms-badge"><i class="fab fa-bootstrap me-1"></i> Bootstrap 5</span>
+                <span class="lms-badge"><i class="fab fa-js me-1"></i> JavaScript</span>
+                <span class="lms-badge"><i class="fas fa-table me-1"></i> DataTables</span>
+                <span class="lms-badge"><i class="fas fa-bell me-1"></i> SweetAlert2</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <!-- Contact -->
 <section class="section" id="contact" style="background: #f0f4f8;">
     <div class="container">
         <h2 class="section-title text-center">Get In <span>Touch</span></h2>
         <div class="section-line mx-auto"></div>
         <p class="text-center mb-5" style="color: #666;">
-            Want to hire me or need a custom ERP system? Feel free to contact me!
+            Want to hire me or need a custom ERP / LMS system? Feel free to contact me!
         </p>
         <div class="row justify-content-center">
             <div class="col-md-3">
                 <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
                     <h5 style="color: var(--primary);">Phone</h5>
                     <p style="color: #666;">0334-0970941</p>
                     <a href="tel:03340970941" class="btn-hero" style="font-size: 13px; padding: 8px 20px;">Call Now</a>
@@ -653,9 +783,7 @@
             </div>
             <div class="col-md-3">
                 <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <h5 style="color: var(--primary);">Email</h5>
                     <p style="color: #666; font-size: 13px;">ateeqawan744@gmail.com</p>
                     <a href="mailto:ateeqawan744@gmail.com" class="btn-hero" style="font-size: 13px; padding: 8px 20px;">Email Me</a>
@@ -663,9 +791,7 @@
             </div>
             <div class="col-md-3">
                 <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                     <h5 style="color: var(--primary);">WhatsApp</h5>
                     <p style="color: #666;">0334-0970941</p>
                     <a href="https://wa.me/923340970941" target="_blank" class="btn-hero" style="font-size: 13px; padding: 8px 20px;">WhatsApp</a>
@@ -673,9 +799,7 @@
             </div>
             <div class="col-md-3">
                 <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <h5 style="color: var(--primary);">Location</h5>
                     <p style="color: #666;">Margalla Town, Islamabad</p>
                     <a href="#" class="btn-hero" style="font-size: 13px; padding: 8px 20px;">View Map</a>
@@ -689,7 +813,7 @@
 <footer>
     <div class="container">
         <h4><span>Ateeq</span> Awan</h4>
-        <p style="color: rgba(255,255,255,0.7); margin: 10px 0;">WordPress Developer | Digital Marketer | Laravel ERP Developer</p>
+        <p style="color: rgba(255,255,255,0.7); margin: 10px 0;">WordPress Developer | Digital Marketer | Laravel ERP & LMS Developer</p>
         <p style="color: rgba(255,255,255,0.5); font-size: 13px;">
             &copy; 2026 Ateeq Awan. All Rights Reserved. Made with <span>♥</span> in Pakistan
         </p>
@@ -698,24 +822,19 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Intersection Observer for animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
     });
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in, .slide-left, .slide-right, .zoom-in, .section-line').forEach(el => observer.observe(el));
 
-// Skill bar animation
 const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.querySelectorAll('.skill-fill').forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width;
+                bar.style.width = bar.getAttribute('data-width');
                 bar.classList.add('animate');
             });
         }
@@ -724,34 +843,22 @@ const skillObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.skill-card').forEach(el => skillObserver.observe(el));
 
-// Navbar scroll effect
 window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+    document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Counter animation for stats
 const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const counters = entry.target.querySelectorAll('h3');
-            counters.forEach(counter => {
+            entry.target.querySelectorAll('h3').forEach(counter => {
                 const target = counter.innerText.replace('+', '').replace('%', '');
                 const suffix = counter.innerText.includes('+') ? '+' : counter.innerText.includes('%') ? '%' : '';
                 let count = 0;
                 const increment = target / 30;
                 const timer = setInterval(() => {
                     count += increment;
-                    if (count >= target) {
-                        counter.innerText = target + suffix;
-                        clearInterval(timer);
-                    } else {
-                        counter.innerText = Math.floor(count) + suffix;
-                    }
+                    if (count >= target) { counter.innerText = target + suffix; clearInterval(timer); }
+                    else counter.innerText = Math.floor(count) + suffix;
                 }, 50);
             });
         }
@@ -761,14 +868,11 @@ const counterObserver = new IntersectionObserver((entries) => {
 const statsSection = document.querySelector('.stats');
 if (statsSection) counterObserver.observe(statsSection);
 
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
 </script>
